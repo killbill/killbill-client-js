@@ -1,0 +1,28 @@
+{
+  "name": "killbill",
+  "version": "0.0.1",
+  "description": "Kill Bill client library",
+  "homepage": "https://github.com/killbill/killbill-client-js",
+  "author": "Kill Bill core team <killbilling-users@googlegroups.com> (http://kill-bill.org/)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/killbill/killbill-client-js.git"
+  },
+  "bugs:": "https://github.com/killbill/killbill-client-js/issues",
+  "engines": {
+    "node": ">= v0.8.0"
+  },
+  "main": "lib/killbill.js",
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.13.0",
+    "xmlhttprequest": "~1.6.0",
+    "btoa": "~1.1.1",
+    "uglify-js": "~2.4.8"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}

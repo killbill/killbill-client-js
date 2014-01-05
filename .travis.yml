@@ -1,0 +1,9 @@
+language: node_js
+
+notifications:
+  email:
+    - kill-bill-commits@googlegroups.com
+
+node_js:
+  - "0.10"
+  - "0.8"
