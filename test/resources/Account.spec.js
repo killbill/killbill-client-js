@@ -16,10 +16,12 @@ describe('Account Resource', function() {
       K.Account.create(user, 'mocha', 'testing', null ,function(error, kbAccount){
         if (error){
           done(error);
+        } else {
+          account = kbAccount;
+          expect(user.email).to.equal(account.email);
+          done();
         }
 
-        account = kbAccount;
-        done();
       })
     })
   });
@@ -30,11 +32,11 @@ describe('Account Resource', function() {
       K.Account.getById(accountId, function(error, account) {
         if (error) {
           done(error);
+        } else {
+          expect(account.accountId).to.equal(accountId);
+          done();
         }
 
-        expect(account.accountId).to.equal(accountId);
-
-        done();
       })
     });
   });
@@ -45,11 +47,11 @@ describe('Account Resource', function() {
       K.Account.getByExternalKey(account.externalKey, function(error, account){
         if (error){
           done(error);
+        } else {
+          expect(account.externalKey).to.equal(externalKey);
+          done();
         }
 
-        expect(account.externalKey).to.equal(externalKey);
-
-        done();
       });
     });
   });
