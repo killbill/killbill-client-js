@@ -3,47 +3,55 @@
 require('../testUtils');
 
 describe('Account Resource', function() {
-  describe('retrieve', function() {
-    it('Can create and retrieve an account', function(done) {
-      var rand = new Date().getTime();
-
-      K.Account.create({
+  var rand = new Date().getTime(),
+      user = {
         externalKey: rand,
         email: 'test-' + rand + '@killbill.com',
         name: 'bob ' + rand
       },
-      'mocha',
-      'testing',
-      null,
-      function(err, account) {
-        if (err) {
-          done(err);
+      account;
+
+  describe('Create', function(){
+    it('Can create a user', function(done){
+      K.Account.create(user, 'mocha', 'testing', null ,function(error, kbAccount){
+        if (error){
+          done(error);
         }
 
-        // Check we can retrieve the account by id
-        var accountId = account.accountId;
-        K.Account.getById(accountId,
-                          function(err, account) {
-                            if (err) {
-                              done(err);
-                            }
+        account = kbAccount;
+        done();
+      })
+    })
+  });
 
-                            expect(account.accountId).to.equal(accountId);
+  describe('Retrieve by Id', function(){
+    it('Can retrieve an account', function(done){
+      var accountId = account.accountId;
+      K.Account.getById(accountId, function(error, account) {
+        if (error) {
+          done(error);
+        }
 
-                            // Check we can retrieve the account via its external key
-                            K.Account.getByExternalKey(account.externalKey,
-                                                       function(err, account2) {
-                                                         if (err) {
-                                                           done(err);
-                                                         }
+        expect(account.accountId).to.equal(accountId);
 
-                                                         expect(account2.accountId).to.equal(account.accountId);
-                                                         expect(account2.externalKey).to.equal(account.externalKey);
+        done();
+      })
+    });
+  });
 
-                                                         done();
-                                                       });
-                          });
+  describe('Retrieve by External Key', function(){
+    it('Can retrieve an account by external key', function (done) {
+      var externalKey = account.externalKey;
+      K.Account.getByExternalKey(account.externalKey, function(error, account){
+        if (error){
+          done(error);
+        }
+
+        expect(account.externalKey).to.equal(externalKey);
+
+        done();
       });
     });
   });
+
 });
