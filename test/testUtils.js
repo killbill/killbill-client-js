@@ -8,3 +8,4 @@ assert = chai.assert;
 require('../lib/killbill');
 require('../lib/resources/Account');
 require('../lib/resources/Subscription');
+require('../lib/resources/Security');
