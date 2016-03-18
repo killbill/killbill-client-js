@@ -208,23 +208,32 @@ describe('Subscription Resource', function () {
 
     describe('cancel', function () {
         it('should cancel subscription', function (done) {
-            K.Subscription.cancel(subscription, 'mocha', 'testing', 'testing', function (error, result) {
+
+            var requestedDate = new Date();
+            requestedDate.setDate(requestedDate.getDate() + 7);
+            requestedDate = dateFormat(requestedDate, 'yyyy-mm-dd');
+
+            K.Subscription.cancel(subscription, 'mocha', 'testing', 'testing', {
+                requestedDate: requestedDate,
+                useRequestedDateForBilling: true
+            }, function (error, result) {
                 if (error)
                     done(error);
                 K.Subscription.getById(subscription.subscriptionId, function (error, result) {
-                    expect(result.state).to.equal('CANCELLED');
+                    expect(result.cancelledDate).to.equal(requestedDate);
+                    expect(result.billingEndDate).to.equal(requestedDate);
                     subscription = result;
                     done();
                 });
             })
         });
-        //TODO - getting error "Subscription ... was not in a cancelled state: Failed to uncancel plan" even tho subscription is in cancelled state :(
-        it.skip('should uncancel subscription', function (done) {
+        it('should uncancel subscription', function (done) {
             K.Subscription.uncancel(subscription, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     done(error);
                 K.Subscription.getById(subscription.subscriptionId, function (error, result) {
-                    expect(result.state).to.equal('ACTIVE');
+                    expect(result.cancelledDate).to.equal(null);
+                    expect(result.billingEndDate).to.equal(null);
                     subscription = result;
                     done();
                 });
