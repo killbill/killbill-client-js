@@ -102,7 +102,7 @@ describe('Payment Method Resource', function () {
                 if (error)
                     throw error;
                 PaymentMethod.getById(paymentMethod.paymentMethodId, function (error, result) {
-                    expect(result).to.equal(null);
+                    expect(error.message).to.equal('Payment method '+ paymentMethod.paymentMethodId +' does not exist');
                     done();
                 })
             });
