@@ -2,6 +2,9 @@
 
 require('../testUtils');
 
+var Account = require('../../lib/resources/Account');
+var PaymentMethod = require('../../lib/resources/PaymentMethod');
+
 
 describe('Payment Method Resource', function () {
 
@@ -13,7 +16,7 @@ describe('Payment Method Resource', function () {
             externalKey: rand,
             name: 'paymentmethods ' + rand
         };
-        K.Account.create(a, 'mocha', 'testing', 'testing', function (error, result) {
+        Account.create(a, 'mocha', 'testing', 'testing', function (error, result) {
             account = result;
             done();
         });
@@ -30,7 +33,7 @@ describe('Payment Method Resource', function () {
                 isDefault: false
             };
 
-            K.PaymentMethod.create(p, 'mocha', 'testing', 'testing', params, function (error, result) {
+            PaymentMethod.create(p, 'mocha', 'testing', 'testing', params, function (error, result) {
                 if (error)
                     throw error;
                 expect(result.accountId).to.equal(account.accountId);
@@ -42,7 +45,7 @@ describe('Payment Method Resource', function () {
         });
 
         it('should not be the default payment method', function (done) {
-            K.Account.getById(account.accountId, function (error, result) {
+            Account.getById(account.accountId, function (error, result) {
                 if (error)
                     throw error;
                 expect(result.paymentMethodId).not.to.equal(paymentMethod.paymentMethodId);
@@ -53,10 +56,10 @@ describe('Payment Method Resource', function () {
 
     describe('set default', function() {
         it('should set the payment method as default', function (done) {
-            K.PaymentMethod.setDefault(account.accountId, paymentMethod.paymentMethodId, 'mocha', 'testing', 'testing', function (error) {
+            PaymentMethod.setDefault(account.accountId, paymentMethod.paymentMethodId, 'mocha', 'testing', 'testing', function (error) {
                 if (error)
                     throw error;
-                K.Account.getById(account.accountId, function (error, result) {
+                Account.getById(account.accountId, function (error, result) {
                     if (error)
                         throw error;
                     expect(result.paymentMethodId).to.equal(paymentMethod.paymentMethodId);
@@ -68,7 +71,7 @@ describe('Payment Method Resource', function () {
 
     describe('get by id', function () {
         it('should retrieve a payment method by id', function (done) {
-            K.PaymentMethod.getById(paymentMethod.paymentMethodId, function (error, result) {
+            PaymentMethod.getById(paymentMethod.paymentMethodId, function (error, result) {
                 if (error)
                     throw error;
                 expect(result.paymentMethodId).to.equal(paymentMethod.paymentMethodId);
@@ -79,7 +82,7 @@ describe('Payment Method Resource', function () {
 
     describe('list', function () {
         it('should list all payment methods', function (done) {
-            K.PaymentMethod.list(function (error, result) {
+            PaymentMethod.list(function (error, result) {
                 if (error)
                     throw error;
                 assert.isArray(result);
@@ -95,11 +98,10 @@ describe('Payment Method Resource', function () {
             var params = {
                 deleteDefaultPmWithAutoPayOff: true
             };
-            K.PaymentMethod.delete(paymentMethod.paymentMethodId, 'mocha', 'testing', 'testing', params, function (error) {
+            PaymentMethod.delete(paymentMethod.paymentMethodId, 'mocha', 'testing', 'testing', params, function (error) {
                 if (error)
                     throw error;
-                K.PaymentMethod.getById(paymentMethod.paymentMethodId, function (error, result) {
-                    console.log('error', error)
+                PaymentMethod.getById(paymentMethod.paymentMethodId, function (error, result) {
                     expect(result).to.equal(null);
                     done();
                 })
