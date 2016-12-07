@@ -14,14 +14,15 @@
   },
   "main": "lib/killbill.js",
   "devDependencies": {
-    "btoa": "~1.1.1",
     "chai": "~1.8.1",
     "dateformat": "^1.0.12",
     "mocha": "~1.13.0",
-    "uglify-js": "~2.4.8",
+    "uglify-js": "~2.4.8"
+  },
+  "dependencies": {
+    "btoa": "~1.1.1",
     "xmlhttprequest": "~1.6.0"
   },
-  "dependencies": {},
   "scripts": {
     "test": "mocha"
   }

@@ -1,7 +1,7 @@
 'use strict';
 
 require('../testUtils');
-
+var Account = require('../../lib/resources/Account')
 
 describe('Account Resource', function () {
 
@@ -15,7 +15,7 @@ describe('Account Resource', function () {
                 email: 'test-' + rand + '@killbill.com',
                 name: 'bob ' + rand
             };
-            K.Account.create(a, 'mocha', 'testing', 'testing', function (error, result) {
+            Account.create(a, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 account = result;
@@ -26,7 +26,7 @@ describe('Account Resource', function () {
 
     describe('get by id', function () {
         it('should retrieve an account by id', function (done) {
-            K.Account.getById(account.accountId, function (error, result) {
+            Account.getById(account.accountId, function (error, result) {
                 if (error)
                     throw error;
                 expect(result.accountId).to.equal(account.accountId);
@@ -37,7 +37,7 @@ describe('Account Resource', function () {
 
     describe('get by external key', function () {
         it('should retrieve an account by external key', function (done) {
-            K.Account.getByExternalKey(account.externalKey, function (error, result) {
+            Account.getByExternalKey(account.externalKey, function (error, result) {
                 if (error)
                     throw error;
                 expect(result.accountId).to.equal(account.accountId);
@@ -53,7 +53,7 @@ describe('Account Resource', function () {
                 accountId: account.accountId,
                 name: account.name + ' updated'
             };
-            K.Account.update(a, 'mocha', 'testing', 'testing', function (error, result) {
+            Account.update(a, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 expect(result.accountId).to.equal(account.accountId);
@@ -66,7 +66,7 @@ describe('Account Resource', function () {
 
     describe('search', function () {
         it('should find accounts', function (done) {
-            K.Account.search('bob', {offset: 0, limit: 100}, function (error, result) {
+            Account.search('bob', {offset: 0, limit: 100}, function (error, result) {
                 if (error)
                     throw error;
                 assert.isArray(result);
@@ -78,7 +78,7 @@ describe('Account Resource', function () {
 
     describe('list', function () {
         it('should list accounts', function (done) {
-            K.Account.list(function (error, result) {
+            Account.list(function (error, result) {
                 if (error)
                     throw error;
                 assert.isArray(result);
@@ -90,7 +90,7 @@ describe('Account Resource', function () {
 
     describe('timeline', function () {
         it('should return account timeline', function (done) {
-            K.Account.timeline(account.accountId, function (error, result) {
+            Account.timeline(account.accountId, function (error, result) {
                 if (error)
                     throw error;
                 expect(result.account.accountId).to.equal(account.accountId);
@@ -122,7 +122,7 @@ describe('Account Resource', function () {
         };
 
         it('should add custom field to account', function (done) {
-            K.Account.addCustomFields(account.accountId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
+            Account.addCustomFields(account.accountId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 verifyCustomFields(result);
@@ -132,7 +132,7 @@ describe('Account Resource', function () {
         });
 
         it('should get custom fields for account', function (done) {
-            K.Account.getCustomFields(account.accountId, function (error, result) {
+            Account.getCustomFields(account.accountId, function (error, result) {
                 if (error)
                     throw error;
                 verifyCustomFields(result);
@@ -141,10 +141,10 @@ describe('Account Resource', function () {
         });
 
         it('should remove custom fields from account', function (done) {
-            K.Account.removeCustomFields(account.accountId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
+            Account.removeCustomFields(account.accountId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
-                K.Account.getCustomFields(account.accountId, function (error, result) {
+                Account.getCustomFields(account.accountId, function (error, result) {
                     if (error)
                         throw error;
                     assert.isArray(result);
@@ -175,7 +175,7 @@ describe('Account Resource', function () {
         };
 
         it('should add tags to account', function (done) {
-            K.Account.addTags(account.accountId, tags, 'mocha', 'testing', 'testing', function (error, result) {
+            Account.addTags(account.accountId, tags, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 verifyTags(result);
@@ -185,7 +185,7 @@ describe('Account Resource', function () {
         });
 
         it('should get tags for account', function (done) {
-            K.Account.getTags(account.accountId, function (error, result) {
+            Account.getTags(account.accountId, function (error, result) {
                 if (error)
                     throw error;
                 verifyTags(result);
@@ -194,10 +194,10 @@ describe('Account Resource', function () {
         });
 
         it('should remove tags from account', function (done) {
-            K.Account.removeTags(account.accountId, tags, 'mocha', 'testing', 'testing', function (error, success) {
+            Account.removeTags(account.accountId, tags, 'mocha', 'testing', 'testing', function (error, success) {
                 if (error)
                     throw error;
-                K.Account.getTags(account.accountId, function (error, result) {
+                Account.getTags(account.accountId, function (error, result) {
                     if (error)
                         throw error;
                     assert.isArray(result);
@@ -208,7 +208,7 @@ describe('Account Resource', function () {
         });
 
         it('should get deleted tags for account', function (done) {
-            K.Account.getTags(account.accountId, {includedDeleted: true}, function (error, result) {
+            Account.getTags(account.accountId, {includedDeleted: true}, function (error, result) {
                 if (error)
                     throw error;
                 verifyTags(result);
@@ -227,7 +227,7 @@ describe('Account Resource', function () {
         };
 
         it('should add email to account', function (done) {
-            K.Account.addEmail(account.accountId, email, 'mocha', 'testing', 'testing', function (error, result) {
+            Account.addEmail(account.accountId, email, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 verifyEmails(result);
@@ -237,7 +237,7 @@ describe('Account Resource', function () {
         });
 
         it('should get emails for account', function (done) {
-            K.Account.getEmails(account.accountId, function (error, result) {
+            Account.getEmails(account.accountId, function (error, result) {
                 if (error)
                     throw error;
                 verifyEmails(result);
@@ -246,11 +246,11 @@ describe('Account Resource', function () {
         });
 
         it('should remove email from account', function (done) {
-            K.Account.removeEmail(account.accountId, email, 'mocha', 'testing', 'testing', function (error, result) {
+            Account.removeEmail(account.accountId, email, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
 
-                K.Account.getEmails(account.accountId, function (error, result) {
+                Account.getEmails(account.accountId, function (error, result) {
                     if (error)
                         throw error;
                     assert.isArray(result);

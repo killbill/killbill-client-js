@@ -1,6 +1,10 @@
 'use strict';
 
 require('../testUtils');
+var dateFormat = require('dateformat');
+
+var Account = require('../../lib/resources/Account');
+var Subscription = require('../../lib/resources/Subscription');
 
 describe('Subscription Resource', function () {
 
@@ -13,7 +17,7 @@ describe('Subscription Resource', function () {
             name: 'subscription ' + rand,
             currency: 'USD'
         };
-        K.Account.create(a, 'mocha', 'testing', 'testing', function (error, result) {
+        Account.create(a, 'mocha', 'testing', 'testing', function (error, result) {
             account = result;
             done();
         });
@@ -29,7 +33,7 @@ describe('Subscription Resource', function () {
                 priceList: 'DEFAULT',
                 billingPeriod: 'MONTHLY'
             };
-            K.Subscription.create(s, 'mocha', 'testing', 'testing', function (error, result) {
+            Subscription.create(s, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
 
@@ -56,7 +60,7 @@ describe('Subscription Resource', function () {
                 billingPeriod: 'MONTHLY'
             };
 
-            K.Subscription.createWithAddOns([baseSubscription], 'mocha', 'testing', 'testing', function (error, result) {
+            Subscription.createWithAddOns([baseSubscription], 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 expect(result.accountId).to.equal(account.accountId);
@@ -70,7 +74,7 @@ describe('Subscription Resource', function () {
 
     describe('get by id', function () {
         it('should retrieve subscription by id', function (done) {
-            K.Subscription.getById(subscription.subscriptionId, function (error, result) {
+            Subscription.getById(subscription.subscriptionId, function (error, result) {
                 if (error)
                     throw error;
                 expect(result.subscriptionId).to.equal(subscription.subscriptionId);
@@ -82,7 +86,7 @@ describe('Subscription Resource', function () {
     describe('update', function () {
         it('should update subscription', function (done) {
             subscription.productName = 'Super';
-            K.Subscription.update(subscription, 'mocha', 'testing', 'testing', function (error, result) {
+            Subscription.update(subscription, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 expect(result.productName).to.equal('Super');
@@ -112,7 +116,7 @@ describe('Subscription Resource', function () {
         };
 
         it('should add custom fields to subscription', function (done) {
-            K.Subscription.addCustomFields(subscription.subscriptionId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
+            Subscription.addCustomFields(subscription.subscriptionId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 verifyCustomFields(result);
@@ -122,7 +126,7 @@ describe('Subscription Resource', function () {
         });
 
         it('should get custom fields for subscription', function (done) {
-            K.Subscription.getCustomFields(subscription.subscriptionId, function (error, result) {
+            Subscription.getCustomFields(subscription.subscriptionId, function (error, result) {
                 if (error)
                     throw error;
                 verifyCustomFields(result);
@@ -131,10 +135,10 @@ describe('Subscription Resource', function () {
         });
 
         it('should remove custom fields from subscription', function (done) {
-            K.Subscription.removeCustomFields(subscription.subscriptionId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
+            Subscription.removeCustomFields(subscription.subscriptionId, customFields, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
-                K.Subscription.getCustomFields(subscription.subscriptionId, function (error, result) {
+                Subscription.getCustomFields(subscription.subscriptionId, function (error, result) {
                     if (error)
                         throw error;
                     assert.isArray(result);
@@ -164,7 +168,7 @@ describe('Subscription Resource', function () {
         };
 
         it('should add tags to subscription', function (done) {
-            K.Subscription.addTags(subscription.subscriptionId, tags, 'mocha', 'testing', 'testing', function (error, result) {
+            Subscription.addTags(subscription.subscriptionId, tags, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
                 verifyTags(result);
@@ -174,7 +178,7 @@ describe('Subscription Resource', function () {
         });
 
         it('should get tags for subscription', function (done) {
-            K.Subscription.getTags(subscription.subscriptionId, function (error, result) {
+            Subscription.getTags(subscription.subscriptionId, function (error, result) {
                 if (error)
                     throw error;
                 verifyTags(result);
@@ -183,10 +187,10 @@ describe('Subscription Resource', function () {
         });
 
         it('should remove tags from subscription', function (done) {
-            K.Subscription.removeTags(subscription.subscriptionId, tags, 'mocha', 'testing', 'testing', function (error, success) {
+            Subscription.removeTags(subscription.subscriptionId, tags, 'mocha', 'testing', 'testing', function (error, success) {
                 if (error)
                     throw error;
-                K.Account.getTags(subscription.subscriptionId, function (error, result) {
+                Account.getTags(subscription.subscriptionId, function (error, result) {
                     if (error)
                         throw error;
                     assert.isArray(result);
@@ -197,7 +201,7 @@ describe('Subscription Resource', function () {
         });
 
         it('should get deleted tags for subscription', function (done) {
-            K.Subscription.getTags(subscription.subscriptionId, {includedDeleted: true}, function (error, result) {
+            Subscription.getTags(subscription.subscriptionId, {includedDeleted: true}, function (error, result) {
                 if (error)
                     throw error;
                 verifyTags(result);
@@ -213,13 +217,13 @@ describe('Subscription Resource', function () {
             requestedDate.setDate(requestedDate.getDate() + 7);
             requestedDate = dateFormat(requestedDate, 'yyyy-mm-dd');
 
-            K.Subscription.cancel(subscription, 'mocha', 'testing', 'testing', {
+            Subscription.cancel(subscription, 'mocha', 'testing', 'testing', {
                 requestedDate: requestedDate,
                 useRequestedDateForBilling: true
             }, function (error, result) {
                 if (error)
                     throw error;
-                K.Subscription.getById(subscription.subscriptionId, function (error, result) {
+                Subscription.getById(subscription.subscriptionId, function (error, result) {
                     expect(result.cancelledDate).to.equal(requestedDate);
                     expect(result.billingEndDate).to.equal(requestedDate);
                     subscription = result;
@@ -228,10 +232,10 @@ describe('Subscription Resource', function () {
             })
         });
         it('should uncancel subscription', function (done) {
-            K.Subscription.uncancel(subscription, 'mocha', 'testing', 'testing', function (error, result) {
+            Subscription.uncancel(subscription, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
-                K.Subscription.getById(subscription.subscriptionId, function (error, result) {
+                Subscription.getById(subscription.subscriptionId, function (error, result) {
                     expect(result.cancelledDate).to.equal(null);
                     expect(result.billingEndDate).to.equal(null);
                     subscription = result;
