@@ -81,12 +81,13 @@ describe('Payment Method Resource', function () {
     });
 
     describe('list', function () {
-        it('should list all payment methods', function (done) {
-            PaymentMethod.list(function (error, result) {
+        it('should list all payment methods of account', function (done) {
+            PaymentMethod.list(account.accountId, function (error, result) {
                 if (error)
                     throw error;
                 assert.isArray(result);
-                assert(result.length >= 1);
+                assert(result.length == 1);
+                expect(result[0].externalKey).to.equal(paymentMethod.externalKey)
                 done();
             });
         });
