@@ -86,6 +86,7 @@ describe('Subscription Resource', function () {
     describe('update', function () {
         it('should update subscription', function (done) {
             subscription.productName = 'Super';
+            subscription.planName = 'super-monthly';
             Subscription.update(subscription, 'mocha', 'testing', 'testing', function (error, result) {
                 if (error)
                     throw error;
