@@ -5901,9 +5901,9 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Block an account
+         * @param {BlockingState} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -5911,7 +5911,11 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addAccountBlockingState: async (accountId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        addAccountBlockingState: async (body: BlockingState, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling addAccountBlockingState.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling addAccountBlockingState.');
@@ -5919,10 +5923,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addAccountBlockingState.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling addAccountBlockingState.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}/block`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -5999,15 +5999,19 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add account email
+         * @param {AccountEmail} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {AccountEmail} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addEmail: async (accountId: string, xKillbillCreatedBy: string, body: AccountEmail, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        addEmail: async (body: AccountEmail, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling addEmail.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling addEmail.');
@@ -6015,10 +6019,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addEmail.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling addEmail.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}/emails`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -6182,21 +6182,21 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create account
-         * @param {string} xKillbillCreatedBy 
          * @param {Account} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAccount: async (xKillbillCreatedBy: string, body: Account, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createAccount.');
-            }
+        createAccount: async (body: Account, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createAccount.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createAccount.');
             }
             const localVarPath = `/1.0/kb/accounts`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -6262,15 +6262,19 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add custom fields to account
+         * @param {Array<CustomField>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAccountCustomFields: async (accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createAccountCustomFields: async (body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createAccountCustomFields.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling createAccountCustomFields.');
@@ -6278,10 +6282,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createAccountCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createAccountCustomFields.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}/customFields`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -6348,15 +6348,19 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add tags to account
+         * @param {Array<string>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAccountTags: async (accountId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createAccountTags: async (body: Array<string>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createAccountTags.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling createAccountTags.');
@@ -6364,10 +6368,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createAccountTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createAccountTags.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}/tags`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -6434,9 +6434,9 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add a payment method
+         * @param {PaymentMethod} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentMethod} body 
          * @param {boolean} [isDefault] 
          * @param {boolean} [payAllUnpaidInvoices] 
          * @param {Array<string>} [controlPluginName] 
@@ -6446,7 +6446,11 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentMethod: async (accountId: string, xKillbillCreatedBy: string, body: PaymentMethod, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createPaymentMethod: async (body: PaymentMethod, accountId: string, xKillbillCreatedBy: string, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentMethod.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling createPaymentMethod.');
@@ -6454,10 +6458,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createPaymentMethod.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentMethod.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}/paymentMethods`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -8169,15 +8169,19 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Modify custom fields to account
+         * @param {Array<CustomField>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyAccountCustomFields: async (accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyAccountCustomFields: async (body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyAccountCustomFields.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling modifyAccountCustomFields.');
@@ -8185,10 +8189,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyAccountCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyAccountCustomFields.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}/customFields`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -8359,9 +8359,9 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Trigger a payment (authorization, purchase or credit)
+         * @param {PaymentTransaction} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -8370,7 +8370,11 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processPayment: async (accountId: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        processPayment: async (body: PaymentTransaction, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling processPayment.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling processPayment.');
@@ -8378,10 +8382,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling processPayment.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling processPayment.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}/payments`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -8460,9 +8460,9 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Trigger a payment using the account external key (authorization, purchase or credit)
+         * @param {PaymentTransaction} body 
          * @param {string} externalKey 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -8471,7 +8471,11 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processPaymentByExternalKey: async (externalKey: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        processPaymentByExternalKey: async (body: PaymentTransaction, externalKey: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling processPaymentByExternalKey.');
+            }
             // verify required parameter 'externalKey' is not null or undefined
             if (externalKey === null || externalKey === undefined) {
                 throw new RequiredError('externalKey','Required parameter externalKey was null or undefined when calling processPaymentByExternalKey.');
@@ -8479,10 +8483,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling processPaymentByExternalKey.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling processPaymentByExternalKey.');
             }
             const localVarPath = `/1.0/kb/accounts/payments`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -9064,16 +9064,20 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Update account
+         * @param {Account} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Account} body 
          * @param {boolean} [treatNullAsReset] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccount: async (accountId: string, xKillbillCreatedBy: string, body: Account, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        updateAccount: async (body: Account, accountId: string, xKillbillCreatedBy: string, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateAccount.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling updateAccount.');
@@ -9081,10 +9085,6 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling updateAccount.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling updateAccount.');
             }
             const localVarPath = `/1.0/kb/accounts/{accountId}`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -9164,9 +9164,9 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Block an account
+         * @param {BlockingState} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -9174,8 +9174,8 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addAccountBlockingState(accountId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BlockingState>>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).addAccountBlockingState(accountId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async addAccountBlockingState(body: BlockingState, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BlockingState>>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).addAccountBlockingState(body, accountId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9184,16 +9184,16 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add account email
+         * @param {AccountEmail} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {AccountEmail} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addEmail(accountId: string, xKillbillCreatedBy: string, body: AccountEmail, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AccountEmail>>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).addEmail(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async addEmail(body: AccountEmail, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AccountEmail>>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).addEmail(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9223,15 +9223,15 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create account
-         * @param {string} xKillbillCreatedBy 
          * @param {Account} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createAccount(xKillbillCreatedBy: string, body: Account, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Account>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createAccount(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createAccount(body: Account, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Account>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createAccount(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9240,16 +9240,16 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to account
+         * @param {Array<CustomField>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createAccountCustomFields(accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createAccountCustomFields(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createAccountCustomFields(body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createAccountCustomFields(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9258,16 +9258,16 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add tags to account
+         * @param {Array<string>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createAccountTags(accountId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createAccountTags(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createAccountTags(body: Array<string>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createAccountTags(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9276,9 +9276,9 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a payment method
+         * @param {PaymentMethod} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentMethod} body 
          * @param {boolean} [isDefault] 
          * @param {boolean} [payAllUnpaidInvoices] 
          * @param {Array<string>} [controlPluginName] 
@@ -9288,8 +9288,8 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPaymentMethod(accountId: string, xKillbillCreatedBy: string, body: PaymentMethod, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentMethod>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createPaymentMethod(accountId, xKillbillCreatedBy, body, isDefault, payAllUnpaidInvoices, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createPaymentMethod(body: PaymentMethod, accountId: string, xKillbillCreatedBy: string, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentMethod>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).createPaymentMethod(body, accountId, xKillbillCreatedBy, isDefault, payAllUnpaidInvoices, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9676,16 +9676,16 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to account
+         * @param {Array<CustomField>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifyAccountCustomFields(accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).modifyAccountCustomFields(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifyAccountCustomFields(body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).modifyAccountCustomFields(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9716,9 +9716,9 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Trigger a payment (authorization, purchase or credit)
+         * @param {PaymentTransaction} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -9727,8 +9727,8 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processPayment(accountId: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).processPayment(accountId, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async processPayment(body: PaymentTransaction, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).processPayment(body, accountId, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9737,9 +9737,9 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Trigger a payment using the account external key (authorization, purchase or credit)
+         * @param {PaymentTransaction} body 
          * @param {string} externalKey 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -9748,8 +9748,8 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processPaymentByExternalKey(externalKey: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).processPaymentByExternalKey(externalKey, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async processPaymentByExternalKey(body: PaymentTransaction, externalKey: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).processPaymentByExternalKey(body, externalKey, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9868,17 +9868,17 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update account
+         * @param {Account} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Account} body 
          * @param {boolean} [treatNullAsReset] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateAccount(accountId: string, xKillbillCreatedBy: string, body: Account, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).updateAccount(accountId, xKillbillCreatedBy, body, treatNullAsReset, xKillbillReason, xKillbillComment, options);
+        async updateAccount(body: Account, accountId: string, xKillbillCreatedBy: string, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await AccountApiAxiosParamCreator(configuration).updateAccount(body, accountId, xKillbillCreatedBy, treatNullAsReset, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -9896,9 +9896,9 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Block an account
+         * @param {BlockingState} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -9906,22 +9906,22 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addAccountBlockingState(accountId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<BlockingState>> {
-            return AccountApiFp(configuration).addAccountBlockingState(accountId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        addAccountBlockingState(body: BlockingState, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<BlockingState>> {
+            return AccountApiFp(configuration).addAccountBlockingState(body, accountId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add account email
+         * @param {AccountEmail} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {AccountEmail} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addEmail(accountId: string, xKillbillCreatedBy: string, body: AccountEmail, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<AccountEmail>> {
-            return AccountApiFp(configuration).addEmail(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        addEmail(body: AccountEmail, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<AccountEmail>> {
+            return AccountApiFp(configuration).addEmail(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9943,50 +9943,50 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Create account
-         * @param {string} xKillbillCreatedBy 
          * @param {Account} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAccount(xKillbillCreatedBy: string, body: Account, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Account> {
-            return AccountApiFp(configuration).createAccount(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createAccount(body: Account, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Account> {
+            return AccountApiFp(configuration).createAccount(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add custom fields to account
+         * @param {Array<CustomField>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAccountCustomFields(accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return AccountApiFp(configuration).createAccountCustomFields(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createAccountCustomFields(body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return AccountApiFp(configuration).createAccountCustomFields(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add tags to account
+         * @param {Array<string>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAccountTags(accountId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
-            return AccountApiFp(configuration).createAccountTags(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createAccountTags(body: Array<string>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
+            return AccountApiFp(configuration).createAccountTags(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add a payment method
+         * @param {PaymentMethod} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentMethod} body 
          * @param {boolean} [isDefault] 
          * @param {boolean} [payAllUnpaidInvoices] 
          * @param {Array<string>} [controlPluginName] 
@@ -9996,8 +9996,8 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentMethod(accountId: string, xKillbillCreatedBy: string, body: PaymentMethod, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<PaymentMethod> {
-            return AccountApiFp(configuration).createPaymentMethod(accountId, xKillbillCreatedBy, body, isDefault, payAllUnpaidInvoices, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createPaymentMethod(body: PaymentMethod, accountId: string, xKillbillCreatedBy: string, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<PaymentMethod> {
+            return AccountApiFp(configuration).createPaymentMethod(body, accountId, xKillbillCreatedBy, isDefault, payAllUnpaidInvoices, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -10288,16 +10288,16 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Modify custom fields to account
+         * @param {Array<CustomField>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyAccountCustomFields(accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return AccountApiFp(configuration).modifyAccountCustomFields(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyAccountCustomFields(body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return AccountApiFp(configuration).modifyAccountCustomFields(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -10320,9 +10320,9 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Trigger a payment (authorization, purchase or credit)
+         * @param {PaymentTransaction} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -10331,15 +10331,15 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processPayment(accountId: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return AccountApiFp(configuration).processPayment(accountId, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        processPayment(body: PaymentTransaction, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return AccountApiFp(configuration).processPayment(body, accountId, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Trigger a payment using the account external key (authorization, purchase or credit)
+         * @param {PaymentTransaction} body 
          * @param {string} externalKey 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -10348,8 +10348,8 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processPaymentByExternalKey(externalKey: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return AccountApiFp(configuration).processPaymentByExternalKey(externalKey, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        processPaymentByExternalKey(body: PaymentTransaction, externalKey: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return AccountApiFp(configuration).processPaymentByExternalKey(body, externalKey, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -10440,17 +10440,17 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Update account
+         * @param {Account} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Account} body 
          * @param {boolean} [treatNullAsReset] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccount(accountId: string, xKillbillCreatedBy: string, body: Account, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return AccountApiFp(configuration).updateAccount(accountId, xKillbillCreatedBy, body, treatNullAsReset, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        updateAccount(body: Account, accountId: string, xKillbillCreatedBy: string, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return AccountApiFp(configuration).updateAccount(body, accountId, xKillbillCreatedBy, treatNullAsReset, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -10465,9 +10465,9 @@ export class AccountApi extends BaseAPI {
     /**
      * 
      * @summary Block an account
+     * @param {BlockingState} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {BlockingState} body 
      * @param {string} [requestedDate] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -10476,24 +10476,24 @@ export class AccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public addAccountBlockingState(accountId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).addAccountBlockingState(accountId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public addAccountBlockingState(body: BlockingState, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).addAccountBlockingState(body, accountId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add account email
+     * @param {AccountEmail} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {AccountEmail} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public addEmail(accountId: string, xKillbillCreatedBy: string, body: AccountEmail, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).addEmail(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public addEmail(body: AccountEmail, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).addEmail(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10518,56 +10518,56 @@ export class AccountApi extends BaseAPI {
     /**
      * 
      * @summary Create account
-     * @param {string} xKillbillCreatedBy 
      * @param {Account} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public createAccount(xKillbillCreatedBy: string, body: Account, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).createAccount(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createAccount(body: Account, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).createAccount(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add custom fields to account
+     * @param {Array<CustomField>} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public createAccountCustomFields(accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).createAccountCustomFields(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createAccountCustomFields(body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).createAccountCustomFields(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add tags to account
+     * @param {Array<string>} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public createAccountTags(accountId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).createAccountTags(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createAccountTags(body: Array<string>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).createAccountTags(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add a payment method
+     * @param {PaymentMethod} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentMethod} body 
      * @param {boolean} [isDefault] 
      * @param {boolean} [payAllUnpaidInvoices] 
      * @param {Array<string>} [controlPluginName] 
@@ -10578,8 +10578,8 @@ export class AccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public createPaymentMethod(accountId: string, xKillbillCreatedBy: string, body: PaymentMethod, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).createPaymentMethod(accountId, xKillbillCreatedBy, body, isDefault, payAllUnpaidInvoices, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createPaymentMethod(body: PaymentMethod, accountId: string, xKillbillCreatedBy: string, isDefault?: boolean, payAllUnpaidInvoices?: boolean, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).createPaymentMethod(body, accountId, xKillbillCreatedBy, isDefault, payAllUnpaidInvoices, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10917,17 +10917,17 @@ export class AccountApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to account
+     * @param {Array<CustomField>} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public modifyAccountCustomFields(accountId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).modifyAccountCustomFields(accountId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyAccountCustomFields(body: Array<CustomField>, accountId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).modifyAccountCustomFields(body, accountId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10953,9 +10953,9 @@ export class AccountApi extends BaseAPI {
     /**
      * 
      * @summary Trigger a payment (authorization, purchase or credit)
+     * @param {PaymentTransaction} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {string} [paymentMethodId] 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
@@ -10965,16 +10965,16 @@ export class AccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public processPayment(accountId: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).processPayment(accountId, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public processPayment(body: PaymentTransaction, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).processPayment(body, accountId, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Trigger a payment using the account external key (authorization, purchase or credit)
+     * @param {PaymentTransaction} body 
      * @param {string} externalKey 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {string} [paymentMethodId] 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
@@ -10984,8 +10984,8 @@ export class AccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public processPaymentByExternalKey(externalKey: string, xKillbillCreatedBy: string, body: PaymentTransaction, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).processPaymentByExternalKey(externalKey, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public processPaymentByExternalKey(body: PaymentTransaction, externalKey: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).processPaymentByExternalKey(body, externalKey, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11089,9 +11089,9 @@ export class AccountApi extends BaseAPI {
     /**
      * 
      * @summary Update account
+     * @param {Account} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Account} body 
      * @param {boolean} [treatNullAsReset] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -11099,8 +11099,8 @@ export class AccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountApi
      */
-    public updateAccount(accountId: string, xKillbillCreatedBy: string, body: Account, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AccountApiFp(this.configuration).updateAccount(accountId, xKillbillCreatedBy, body, treatNullAsReset, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public updateAccount(body: Account, accountId: string, xKillbillCreatedBy: string, treatNullAsReset?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AccountApiFp(this.configuration).updateAccount(body, accountId, xKillbillCreatedBy, treatNullAsReset, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -11564,16 +11564,20 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Update existing paymentTransaction and associated payment state
+         * @param {AdminPayment} body 
          * @param {string} paymentId 
          * @param {string} paymentTransactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {AdminPayment} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePaymentTransactionState: async (paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, body: AdminPayment, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        updatePaymentTransactionState: async (body: AdminPayment, paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updatePaymentTransactionState.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling updatePaymentTransactionState.');
@@ -11585,10 +11589,6 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling updatePaymentTransactionState.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling updatePaymentTransactionState.');
             }
             const localVarPath = `/1.0/kb/admin/payments/{paymentId}/transactions/{paymentTransactionId}`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)))
@@ -11772,17 +11772,17 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update existing paymentTransaction and associated payment state
+         * @param {AdminPayment} body 
          * @param {string} paymentId 
          * @param {string} paymentTransactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {AdminPayment} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePaymentTransactionState(paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, body: AdminPayment, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await AdminApiAxiosParamCreator(configuration).updatePaymentTransactionState(paymentId, paymentTransactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async updatePaymentTransactionState(body: AdminPayment, paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await AdminApiAxiosParamCreator(configuration).updatePaymentTransactionState(body, paymentId, paymentTransactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -11879,17 +11879,17 @@ export const AdminApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Update existing paymentTransaction and associated payment state
+         * @param {AdminPayment} body 
          * @param {string} paymentId 
          * @param {string} paymentTransactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {AdminPayment} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePaymentTransactionState(paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, body: AdminPayment, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return AdminApiFp(configuration).updatePaymentTransactionState(paymentId, paymentTransactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        updatePaymentTransactionState(body: AdminPayment, paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return AdminApiFp(configuration).updatePaymentTransactionState(body, paymentId, paymentTransactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -11997,18 +11997,18 @@ export class AdminApi extends BaseAPI {
     /**
      * 
      * @summary Update existing paymentTransaction and associated payment state
+     * @param {AdminPayment} body 
      * @param {string} paymentId 
      * @param {string} paymentTransactionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {AdminPayment} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public updatePaymentTransactionState(paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, body: AdminPayment, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return AdminApiFp(this.configuration).updatePaymentTransactionState(paymentId, paymentTransactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public updatePaymentTransactionState(body: AdminPayment, paymentId: string, paymentTransactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return AdminApiFp(this.configuration).updatePaymentTransactionState(body, paymentId, paymentTransactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -12023,9 +12023,9 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Block a bundle
+         * @param {BlockingState} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -12033,7 +12033,11 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addBundleBlockingState: async (bundleId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        addBundleBlockingState: async (body: BlockingState, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling addBundleBlockingState.');
+            }
             // verify required parameter 'bundleId' is not null or undefined
             if (bundleId === null || bundleId === undefined) {
                 throw new RequiredError('bundleId','Required parameter bundleId was null or undefined when calling addBundleBlockingState.');
@@ -12041,10 +12045,6 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addBundleBlockingState.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling addBundleBlockingState.');
             }
             const localVarPath = `/1.0/kb/bundles/{bundleId}/block`
                 .replace(`{${"bundleId"}}`, encodeURIComponent(String(bundleId)));
@@ -12121,15 +12121,19 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Add custom fields to bundle
+         * @param {Array<CustomField>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createBundleCustomFields: async (bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createBundleCustomFields: async (body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createBundleCustomFields.');
+            }
             // verify required parameter 'bundleId' is not null or undefined
             if (bundleId === null || bundleId === undefined) {
                 throw new RequiredError('bundleId','Required parameter bundleId was null or undefined when calling createBundleCustomFields.');
@@ -12137,10 +12141,6 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createBundleCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createBundleCustomFields.');
             }
             const localVarPath = `/1.0/kb/bundles/{bundleId}/customFields`
                 .replace(`{${"bundleId"}}`, encodeURIComponent(String(bundleId)));
@@ -12207,15 +12207,19 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Add tags to bundle
+         * @param {Array<string>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createBundleTags: async (bundleId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createBundleTags: async (body: Array<string>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createBundleTags.');
+            }
             // verify required parameter 'bundleId' is not null or undefined
             if (bundleId === null || bundleId === undefined) {
                 throw new RequiredError('bundleId','Required parameter bundleId was null or undefined when calling createBundleTags.');
@@ -12223,10 +12227,6 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createBundleTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createBundleTags.');
             }
             const localVarPath = `/1.0/kb/bundles/{bundleId}/tags`
                 .replace(`{${"bundleId"}}`, encodeURIComponent(String(bundleId)));
@@ -12847,15 +12847,19 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Modify custom fields to bundle
+         * @param {Array<CustomField>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyBundleCustomFields: async (bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyBundleCustomFields: async (body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyBundleCustomFields.');
+            }
             // verify required parameter 'bundleId' is not null or undefined
             if (bundleId === null || bundleId === undefined) {
                 throw new RequiredError('bundleId','Required parameter bundleId was null or undefined when calling modifyBundleCustomFields.');
@@ -12863,10 +12867,6 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyBundleCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyBundleCustomFields.');
             }
             const localVarPath = `/1.0/kb/bundles/{bundleId}/customFields`
                 .replace(`{${"bundleId"}}`, encodeURIComponent(String(bundleId)));
@@ -13022,15 +13022,19 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Update a bundle externalKey
+         * @param {Bundle} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Bundle} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        renameExternalKey: async (bundleId: string, xKillbillCreatedBy: string, body: Bundle, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        renameExternalKey: async (body: Bundle, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling renameExternalKey.');
+            }
             // verify required parameter 'bundleId' is not null or undefined
             if (bundleId === null || bundleId === undefined) {
                 throw new RequiredError('bundleId','Required parameter bundleId was null or undefined when calling renameExternalKey.');
@@ -13038,10 +13042,6 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling renameExternalKey.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling renameExternalKey.');
             }
             const localVarPath = `/1.0/kb/bundles/{bundleId}/renameKey`
                 .replace(`{${"bundleId"}}`, encodeURIComponent(String(bundleId)));
@@ -13270,9 +13270,9 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Transfer a bundle to another account
+         * @param {Bundle} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Bundle} body 
          * @param {string} [requestedDate] 
          * @param {'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL'} [billingPolicy] 
          * @param {Array<string>} [pluginProperty] 
@@ -13281,7 +13281,11 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transferBundle: async (bundleId: string, xKillbillCreatedBy: string, body: Bundle, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        transferBundle: async (body: Bundle, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling transferBundle.');
+            }
             // verify required parameter 'bundleId' is not null or undefined
             if (bundleId === null || bundleId === undefined) {
                 throw new RequiredError('bundleId','Required parameter bundleId was null or undefined when calling transferBundle.');
@@ -13289,10 +13293,6 @@ export const BundleApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling transferBundle.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling transferBundle.');
             }
             const localVarPath = `/1.0/kb/bundles/{bundleId}`
                 .replace(`{${"bundleId"}}`, encodeURIComponent(String(bundleId)));
@@ -13382,9 +13382,9 @@ export const BundleApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Block a bundle
+         * @param {BlockingState} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -13392,8 +13392,8 @@ export const BundleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addBundleBlockingState(bundleId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BlockingState>>> {
-            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).addBundleBlockingState(bundleId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async addBundleBlockingState(body: BlockingState, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BlockingState>>> {
+            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).addBundleBlockingState(body, bundleId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -13402,16 +13402,16 @@ export const BundleApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to bundle
+         * @param {Array<CustomField>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createBundleCustomFields(bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).createBundleCustomFields(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createBundleCustomFields(body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).createBundleCustomFields(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -13420,16 +13420,16 @@ export const BundleApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add tags to bundle
+         * @param {Array<string>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createBundleTags(bundleId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
-            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).createBundleTags(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createBundleTags(body: Array<string>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
+            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).createBundleTags(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -13566,16 +13566,16 @@ export const BundleApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to bundle
+         * @param {Array<CustomField>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifyBundleCustomFields(bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).modifyBundleCustomFields(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifyBundleCustomFields(body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).modifyBundleCustomFields(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -13603,16 +13603,16 @@ export const BundleApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update a bundle externalKey
+         * @param {Bundle} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Bundle} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async renameExternalKey(bundleId: string, xKillbillCreatedBy: string, body: Bundle, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).renameExternalKey(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async renameExternalKey(body: Bundle, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).renameExternalKey(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -13657,9 +13657,9 @@ export const BundleApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Transfer a bundle to another account
+         * @param {Bundle} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Bundle} body 
          * @param {string} [requestedDate] 
          * @param {'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL'} [billingPolicy] 
          * @param {Array<string>} [pluginProperty] 
@@ -13668,8 +13668,8 @@ export const BundleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async transferBundle(bundleId: string, xKillbillCreatedBy: string, body: Bundle, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bundle>> {
-            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).transferBundle(bundleId, xKillbillCreatedBy, body, requestedDate, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async transferBundle(body: Bundle, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bundle>> {
+            const localVarAxiosArgs = await BundleApiAxiosParamCreator(configuration).transferBundle(body, bundleId, xKillbillCreatedBy, requestedDate, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -13687,9 +13687,9 @@ export const BundleApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Block a bundle
+         * @param {BlockingState} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -13697,36 +13697,36 @@ export const BundleApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addBundleBlockingState(bundleId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<BlockingState>> {
-            return BundleApiFp(configuration).addBundleBlockingState(bundleId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        addBundleBlockingState(body: BlockingState, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<BlockingState>> {
+            return BundleApiFp(configuration).addBundleBlockingState(body, bundleId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add custom fields to bundle
+         * @param {Array<CustomField>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createBundleCustomFields(bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return BundleApiFp(configuration).createBundleCustomFields(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createBundleCustomFields(body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return BundleApiFp(configuration).createBundleCustomFields(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add tags to bundle
+         * @param {Array<string>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createBundleTags(bundleId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
-            return BundleApiFp(configuration).createBundleTags(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createBundleTags(body: Array<string>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
+            return BundleApiFp(configuration).createBundleTags(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13827,16 +13827,16 @@ export const BundleApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Modify custom fields to bundle
+         * @param {Array<CustomField>} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyBundleCustomFields(bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return BundleApiFp(configuration).modifyBundleCustomFields(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyBundleCustomFields(body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return BundleApiFp(configuration).modifyBundleCustomFields(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13856,16 +13856,16 @@ export const BundleApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Update a bundle externalKey
+         * @param {Bundle} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Bundle} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        renameExternalKey(bundleId: string, xKillbillCreatedBy: string, body: Bundle, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return BundleApiFp(configuration).renameExternalKey(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        renameExternalKey(body: Bundle, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return BundleApiFp(configuration).renameExternalKey(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13898,9 +13898,9 @@ export const BundleApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Transfer a bundle to another account
+         * @param {Bundle} body 
          * @param {string} bundleId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Bundle} body 
          * @param {string} [requestedDate] 
          * @param {'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL'} [billingPolicy] 
          * @param {Array<string>} [pluginProperty] 
@@ -13909,8 +13909,8 @@ export const BundleApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        transferBundle(bundleId: string, xKillbillCreatedBy: string, body: Bundle, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Bundle> {
-            return BundleApiFp(configuration).transferBundle(bundleId, xKillbillCreatedBy, body, requestedDate, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        transferBundle(body: Bundle, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Bundle> {
+            return BundleApiFp(configuration).transferBundle(body, bundleId, xKillbillCreatedBy, requestedDate, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -13925,9 +13925,9 @@ export class BundleApi extends BaseAPI {
     /**
      * 
      * @summary Block a bundle
+     * @param {BlockingState} body 
      * @param {string} bundleId 
      * @param {string} xKillbillCreatedBy 
-     * @param {BlockingState} body 
      * @param {string} [requestedDate] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -13936,40 +13936,40 @@ export class BundleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BundleApi
      */
-    public addBundleBlockingState(bundleId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return BundleApiFp(this.configuration).addBundleBlockingState(bundleId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public addBundleBlockingState(body: BlockingState, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return BundleApiFp(this.configuration).addBundleBlockingState(body, bundleId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add custom fields to bundle
+     * @param {Array<CustomField>} body 
      * @param {string} bundleId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BundleApi
      */
-    public createBundleCustomFields(bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return BundleApiFp(this.configuration).createBundleCustomFields(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createBundleCustomFields(body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return BundleApiFp(this.configuration).createBundleCustomFields(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add tags to bundle
+     * @param {Array<string>} body 
      * @param {string} bundleId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BundleApi
      */
-    public createBundleTags(bundleId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return BundleApiFp(this.configuration).createBundleTags(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createBundleTags(body: Array<string>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return BundleApiFp(this.configuration).createBundleTags(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14087,17 +14087,17 @@ export class BundleApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to bundle
+     * @param {Array<CustomField>} body 
      * @param {string} bundleId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BundleApi
      */
-    public modifyBundleCustomFields(bundleId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return BundleApiFp(this.configuration).modifyBundleCustomFields(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyBundleCustomFields(body: Array<CustomField>, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return BundleApiFp(this.configuration).modifyBundleCustomFields(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14120,17 +14120,17 @@ export class BundleApi extends BaseAPI {
     /**
      * 
      * @summary Update a bundle externalKey
+     * @param {Bundle} body 
      * @param {string} bundleId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Bundle} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BundleApi
      */
-    public renameExternalKey(bundleId: string, xKillbillCreatedBy: string, body: Bundle, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return BundleApiFp(this.configuration).renameExternalKey(bundleId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public renameExternalKey(body: Bundle, bundleId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return BundleApiFp(this.configuration).renameExternalKey(body, bundleId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14168,9 +14168,9 @@ export class BundleApi extends BaseAPI {
     /**
      * 
      * @summary Transfer a bundle to another account
+     * @param {Bundle} body 
      * @param {string} bundleId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Bundle} body 
      * @param {string} [requestedDate] 
      * @param {'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL'} [billingPolicy] 
      * @param {Array<string>} [pluginProperty] 
@@ -14180,8 +14180,8 @@ export class BundleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BundleApi
      */
-    public transferBundle(bundleId: string, xKillbillCreatedBy: string, body: Bundle, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return BundleApiFp(this.configuration).transferBundle(bundleId, xKillbillCreatedBy, body, requestedDate, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public transferBundle(body: Bundle, bundleId: string, xKillbillCreatedBy: string, requestedDate?: string, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return BundleApiFp(this.configuration).transferBundle(body, bundleId, xKillbillCreatedBy, requestedDate, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -14196,21 +14196,21 @@ export const CatalogApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add a simple plan entry in the current version of the catalog
-         * @param {string} xKillbillCreatedBy 
          * @param {SimplePlan} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addSimplePlan: async (xKillbillCreatedBy: string, body: SimplePlan, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addSimplePlan.');
-            }
+        addSimplePlan: async (body: SimplePlan, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling addSimplePlan.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addSimplePlan.');
             }
             const localVarPath = `/1.0/kb/catalog/simplePlan`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -14912,21 +14912,21 @@ export const CatalogApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Upload the full catalog as XML
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadCatalogXml: async (xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadCatalogXml.');
-            }
+        uploadCatalogXml: async (body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling uploadCatalogXml.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadCatalogXml.');
             }
             const localVarPath = `/1.0/kb/catalog/xml`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -15001,15 +15001,15 @@ export const CatalogApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a simple plan entry in the current version of the catalog
-         * @param {string} xKillbillCreatedBy 
          * @param {SimplePlan} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addSimplePlan(xKillbillCreatedBy: string, body: SimplePlan, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await CatalogApiAxiosParamCreator(configuration).addSimplePlan(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async addSimplePlan(body: SimplePlan, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await CatalogApiAxiosParamCreator(configuration).addSimplePlan(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -15168,15 +15168,15 @@ export const CatalogApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Upload the full catalog as XML
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadCatalogXml(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await CatalogApiAxiosParamCreator(configuration).uploadCatalogXml(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async uploadCatalogXml(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await CatalogApiAxiosParamCreator(configuration).uploadCatalogXml(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -15194,15 +15194,15 @@ export const CatalogApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Add a simple plan entry in the current version of the catalog
-         * @param {string} xKillbillCreatedBy 
          * @param {SimplePlan} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addSimplePlan(xKillbillCreatedBy: string, body: SimplePlan, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
-            return CatalogApiFp(configuration).addSimplePlan(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        addSimplePlan(body: SimplePlan, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
+            return CatalogApiFp(configuration).addSimplePlan(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -15317,15 +15317,15 @@ export const CatalogApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Upload the full catalog as XML
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadCatalogXml(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
-            return CatalogApiFp(configuration).uploadCatalogXml(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadCatalogXml(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
+            return CatalogApiFp(configuration).uploadCatalogXml(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -15340,16 +15340,16 @@ export class CatalogApi extends BaseAPI {
     /**
      * 
      * @summary Add a simple plan entry in the current version of the catalog
-     * @param {string} xKillbillCreatedBy 
      * @param {SimplePlan} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CatalogApi
      */
-    public addSimplePlan(xKillbillCreatedBy: string, body: SimplePlan, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return CatalogApiFp(this.configuration).addSimplePlan(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public addSimplePlan(body: SimplePlan, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return CatalogApiFp(this.configuration).addSimplePlan(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -15485,16 +15485,16 @@ export class CatalogApi extends BaseAPI {
     /**
      * 
      * @summary Upload the full catalog as XML
-     * @param {string} xKillbillCreatedBy 
      * @param {string} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CatalogApi
      */
-    public uploadCatalogXml(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return CatalogApiFp(this.configuration).uploadCatalogXml(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadCatalogXml(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return CatalogApiFp(this.configuration).uploadCatalogXml(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -15509,8 +15509,8 @@ export const CreditApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Create a credit
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<InvoiceItem>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [autoCommit] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -15518,14 +15518,14 @@ export const CreditApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCredits: async (xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createCredits.');
-            }
+        createCredits: async (body: Array<InvoiceItem>, xKillbillCreatedBy: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createCredits.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createCredits.');
             }
             const localVarPath = `/1.0/kb/credits`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -15666,8 +15666,8 @@ export const CreditApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a credit
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<InvoiceItem>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [autoCommit] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -15675,8 +15675,8 @@ export const CreditApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createCredits(xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InvoiceItem>>> {
-            const localVarAxiosArgs = await CreditApiAxiosParamCreator(configuration).createCredits(xKillbillCreatedBy, body, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createCredits(body: Array<InvoiceItem>, xKillbillCreatedBy: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InvoiceItem>>> {
+            const localVarAxiosArgs = await CreditApiAxiosParamCreator(configuration).createCredits(body, xKillbillCreatedBy, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -15708,8 +15708,8 @@ export const CreditApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Create a credit
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<InvoiceItem>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [autoCommit] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -15717,8 +15717,8 @@ export const CreditApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCredits(xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<InvoiceItem>> {
-            return CreditApiFp(configuration).createCredits(xKillbillCreatedBy, body, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createCredits(body: Array<InvoiceItem>, xKillbillCreatedBy: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<InvoiceItem>> {
+            return CreditApiFp(configuration).createCredits(body, xKillbillCreatedBy, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -15743,8 +15743,8 @@ export class CreditApi extends BaseAPI {
     /**
      * 
      * @summary Create a credit
-     * @param {string} xKillbillCreatedBy 
      * @param {Array<InvoiceItem>} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {boolean} [autoCommit] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -15753,8 +15753,8 @@ export class CreditApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CreditApi
      */
-    public createCredits(xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return CreditApiFp(this.configuration).createCredits(xKillbillCreatedBy, body, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createCredits(body: Array<InvoiceItem>, xKillbillCreatedBy: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return CreditApiFp(this.configuration).createCredits(body, xKillbillCreatedBy, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16431,9 +16431,9 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Adjust an invoice item
+         * @param {InvoiceItem} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoiceItem} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -16441,7 +16441,11 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adjustInvoiceItem: async (invoiceId: string, xKillbillCreatedBy: string, body: InvoiceItem, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        adjustInvoiceItem: async (body: InvoiceItem, invoiceId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling adjustInvoiceItem.');
+            }
             // verify required parameter 'invoiceId' is not null or undefined
             if (invoiceId === null || invoiceId === undefined) {
                 throw new RequiredError('invoiceId','Required parameter invoiceId was null or undefined when calling adjustInvoiceItem.');
@@ -16449,10 +16453,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling adjustInvoiceItem.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling adjustInvoiceItem.');
             }
             const localVarPath = `/1.0/kb/invoices/{invoiceId}`
                 .replace(`{${"invoiceId"}}`, encodeURIComponent(String(invoiceId)));
@@ -16606,9 +16606,9 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create external charge(s)
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {string} [requestedDate] 
          * @param {boolean} [autoCommit] 
          * @param {Array<string>} [pluginProperty] 
@@ -16617,7 +16617,11 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createExternalCharges: async (accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createExternalCharges: async (body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createExternalCharges.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling createExternalCharges.');
@@ -16625,10 +16629,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createExternalCharges.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createExternalCharges.');
             }
             const localVarPath = `/1.0/kb/invoices/charges/{accountId}`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -16796,9 +16796,9 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Trigger a payment for invoice
+         * @param {InvoicePayment} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePayment} body 
          * @param {boolean} [externalPayment] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -16806,7 +16806,11 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInstantPayment: async (invoiceId: string, xKillbillCreatedBy: string, body: InvoicePayment, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createInstantPayment: async (body: InvoicePayment, invoiceId: string, xKillbillCreatedBy: string, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createInstantPayment.');
+            }
             // verify required parameter 'invoiceId' is not null or undefined
             if (invoiceId === null || invoiceId === undefined) {
                 throw new RequiredError('invoiceId','Required parameter invoiceId was null or undefined when calling createInstantPayment.');
@@ -16814,10 +16818,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createInstantPayment.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createInstantPayment.');
             }
             const localVarPath = `/1.0/kb/invoices/{invoiceId}/payments`
                 .replace(`{${"invoiceId"}}`, encodeURIComponent(String(invoiceId)));
@@ -16892,15 +16892,19 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add custom fields to invoice
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceCustomFields: async (invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createInvoiceCustomFields: async (body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceCustomFields.');
+            }
             // verify required parameter 'invoiceId' is not null or undefined
             if (invoiceId === null || invoiceId === undefined) {
                 throw new RequiredError('invoiceId','Required parameter invoiceId was null or undefined when calling createInvoiceCustomFields.');
@@ -16908,10 +16912,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createInvoiceCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceCustomFields.');
             }
             const localVarPath = `/1.0/kb/invoices/{invoiceId}/customFields`
                 .replace(`{${"invoiceId"}}`, encodeURIComponent(String(invoiceId)));
@@ -16978,15 +16978,19 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add tags to invoice
+         * @param {Array<string>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceTags: async (invoiceId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createInvoiceTags: async (body: Array<string>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceTags.');
+            }
             // verify required parameter 'invoiceId' is not null or undefined
             if (invoiceId === null || invoiceId === undefined) {
                 throw new RequiredError('invoiceId','Required parameter invoiceId was null or undefined when calling createInvoiceTags.');
@@ -16994,10 +16998,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createInvoiceTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceTags.');
             }
             const localVarPath = `/1.0/kb/invoices/{invoiceId}/tags`
                 .replace(`{${"invoiceId"}}`, encodeURIComponent(String(invoiceId)));
@@ -17064,16 +17064,20 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create a migration invoice
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {string} [targetDate] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createMigrationInvoice: async (accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createMigrationInvoice: async (body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createMigrationInvoice.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling createMigrationInvoice.');
@@ -17081,10 +17085,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createMigrationInvoice.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createMigrationInvoice.');
             }
             const localVarPath = `/1.0/kb/invoices/migration/{accountId}`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -17157,9 +17157,9 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create tax items
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {boolean} [autoCommit] 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
@@ -17168,7 +17168,11 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTaxItems: async (accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createTaxItems: async (body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createTaxItems.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling createTaxItems.');
@@ -17176,10 +17180,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createTaxItems.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createTaxItems.');
             }
             const localVarPath = `/1.0/kb/invoices/taxes/{accountId}`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -17516,16 +17516,20 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Generate a dryRun invoice
+         * @param {InvoiceDryRun} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoiceDryRun} body 
          * @param {string} [targetDate] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        generateDryRunInvoice: async (accountId: string, xKillbillCreatedBy: string, body: InvoiceDryRun, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        generateDryRunInvoice: async (body: InvoiceDryRun, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling generateDryRunInvoice.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling generateDryRunInvoice.');
@@ -17533,10 +17537,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling generateDryRunInvoice.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling generateDryRunInvoice.');
             }
             const localVarPath = `/1.0/kb/invoices/dryRun`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -18429,15 +18429,19 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Modify custom fields to invoice
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyInvoiceCustomFields: async (invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyInvoiceCustomFields: async (body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyInvoiceCustomFields.');
+            }
             // verify required parameter 'invoiceId' is not null or undefined
             if (invoiceId === null || invoiceId === undefined) {
                 throw new RequiredError('invoiceId','Required parameter invoiceId was null or undefined when calling modifyInvoiceCustomFields.');
@@ -18445,10 +18449,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyInvoiceCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyInvoiceCustomFields.');
             }
             const localVarPath = `/1.0/kb/invoices/{invoiceId}/customFields`
                 .replace(`{${"invoiceId"}}`, encodeURIComponent(String(invoiceId)));
@@ -18588,16 +18588,20 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Upload the catalog translation for the tenant
+         * @param {string} body 
          * @param {string} locale 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadCatalogTranslation: async (locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        uploadCatalogTranslation: async (body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadCatalogTranslation.');
+            }
             // verify required parameter 'locale' is not null or undefined
             if (locale === null || locale === undefined) {
                 throw new RequiredError('locale','Required parameter locale was null or undefined when calling uploadCatalogTranslation.');
@@ -18605,10 +18609,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadCatalogTranslation.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadCatalogTranslation.');
             }
             const localVarPath = `/1.0/kb/invoices/catalogTranslation/{locale}`
                 .replace(`{${"locale"}}`, encodeURIComponent(String(locale)));
@@ -18679,22 +18679,22 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Upload the manualPay invoice template for the tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadInvoiceMPTemplate: async (xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadInvoiceMPTemplate.');
-            }
+        uploadInvoiceMPTemplate: async (body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling uploadInvoiceMPTemplate.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadInvoiceMPTemplate.');
             }
             const localVarPath = `/1.0/kb/invoices/manualPayTemplate`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -18764,22 +18764,22 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Upload the invoice template for the tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadInvoiceTemplate: async (xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadInvoiceTemplate.');
-            }
+        uploadInvoiceTemplate: async (body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling uploadInvoiceTemplate.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadInvoiceTemplate.');
             }
             const localVarPath = `/1.0/kb/invoices/template`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -18849,16 +18849,20 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Upload the invoice translation for the tenant
+         * @param {string} body 
          * @param {string} locale 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadInvoiceTranslation: async (locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        uploadInvoiceTranslation: async (body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadInvoiceTranslation.');
+            }
             // verify required parameter 'locale' is not null or undefined
             if (locale === null || locale === undefined) {
                 throw new RequiredError('locale','Required parameter locale was null or undefined when calling uploadInvoiceTranslation.');
@@ -18866,10 +18870,6 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadInvoiceTranslation.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadInvoiceTranslation.');
             }
             const localVarPath = `/1.0/kb/invoices/translation/{locale}`
                 .replace(`{${"locale"}}`, encodeURIComponent(String(locale)));
@@ -19026,9 +19026,9 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Adjust an invoice item
+         * @param {InvoiceItem} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoiceItem} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -19036,8 +19036,8 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adjustInvoiceItem(invoiceId: string, xKillbillCreatedBy: string, body: InvoiceItem, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invoice>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).adjustInvoiceItem(invoiceId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async adjustInvoiceItem(body: InvoiceItem, invoiceId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invoice>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).adjustInvoiceItem(body, invoiceId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19063,9 +19063,9 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create external charge(s)
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {string} [requestedDate] 
          * @param {boolean} [autoCommit] 
          * @param {Array<string>} [pluginProperty] 
@@ -19074,8 +19074,8 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createExternalCharges(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InvoiceItem>>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createExternalCharges(accountId, xKillbillCreatedBy, body, requestedDate, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createExternalCharges(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InvoiceItem>>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createExternalCharges(body, accountId, xKillbillCreatedBy, requestedDate, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19102,9 +19102,9 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Trigger a payment for invoice
+         * @param {InvoicePayment} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePayment} body 
          * @param {boolean} [externalPayment] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -19112,8 +19112,8 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInstantPayment(invoiceId: string, xKillbillCreatedBy: string, body: InvoicePayment, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createInstantPayment(invoiceId, xKillbillCreatedBy, body, externalPayment, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createInstantPayment(body: InvoicePayment, invoiceId: string, xKillbillCreatedBy: string, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createInstantPayment(body, invoiceId, xKillbillCreatedBy, externalPayment, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19122,16 +19122,16 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to invoice
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoiceCustomFields(invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createInvoiceCustomFields(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createInvoiceCustomFields(body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createInvoiceCustomFields(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19140,16 +19140,16 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add tags to invoice
+         * @param {Array<string>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoiceTags(invoiceId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createInvoiceTags(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createInvoiceTags(body: Array<string>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createInvoiceTags(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19158,17 +19158,17 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a migration invoice
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {string} [targetDate] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createMigrationInvoice(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invoice>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createMigrationInvoice(accountId, xKillbillCreatedBy, body, targetDate, xKillbillReason, xKillbillComment, options);
+        async createMigrationInvoice(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invoice>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createMigrationInvoice(body, accountId, xKillbillCreatedBy, targetDate, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19177,9 +19177,9 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create tax items
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {boolean} [autoCommit] 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
@@ -19188,8 +19188,8 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTaxItems(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InvoiceItem>>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createTaxItems(accountId, xKillbillCreatedBy, body, autoCommit, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createTaxItems(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<InvoiceItem>>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).createTaxItems(body, accountId, xKillbillCreatedBy, autoCommit, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19253,17 +19253,17 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Generate a dryRun invoice
+         * @param {InvoiceDryRun} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoiceDryRun} body 
          * @param {string} [targetDate] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async generateDryRunInvoice(accountId: string, xKillbillCreatedBy: string, body: InvoiceDryRun, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invoice>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).generateDryRunInvoice(accountId, xKillbillCreatedBy, body, targetDate, xKillbillReason, xKillbillComment, options);
+        async generateDryRunInvoice(body: InvoiceDryRun, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Invoice>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).generateDryRunInvoice(body, accountId, xKillbillCreatedBy, targetDate, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19467,16 +19467,16 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to invoice
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifyInvoiceCustomFields(invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).modifyInvoiceCustomFields(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifyInvoiceCustomFields(body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).modifyInvoiceCustomFields(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19502,17 +19502,17 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Upload the catalog translation for the tenant
+         * @param {string} body 
          * @param {string} locale 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadCatalogTranslation(locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadCatalogTranslation(locale, xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options);
+        async uploadCatalogTranslation(body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadCatalogTranslation(body, locale, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19521,16 +19521,16 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Upload the manualPay invoice template for the tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadInvoiceMPTemplate(xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadInvoiceMPTemplate(xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options);
+        async uploadInvoiceMPTemplate(body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadInvoiceMPTemplate(body, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19539,16 +19539,16 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Upload the invoice template for the tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadInvoiceTemplate(xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadInvoiceTemplate(xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options);
+        async uploadInvoiceTemplate(body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadInvoiceTemplate(body, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19557,17 +19557,17 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Upload the invoice translation for the tenant
+         * @param {string} body 
          * @param {string} locale 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadInvoiceTranslation(locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadInvoiceTranslation(locale, xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options);
+        async uploadInvoiceTranslation(body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await InvoiceApiAxiosParamCreator(configuration).uploadInvoiceTranslation(body, locale, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -19602,9 +19602,9 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Adjust an invoice item
+         * @param {InvoiceItem} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoiceItem} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -19612,8 +19612,8 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adjustInvoiceItem(invoiceId: string, xKillbillCreatedBy: string, body: InvoiceItem, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Invoice> {
-            return InvoiceApiFp(configuration).adjustInvoiceItem(invoiceId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        adjustInvoiceItem(body: InvoiceItem, invoiceId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Invoice> {
+            return InvoiceApiFp(configuration).adjustInvoiceItem(body, invoiceId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19631,9 +19631,9 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Create external charge(s)
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {string} [requestedDate] 
          * @param {boolean} [autoCommit] 
          * @param {Array<string>} [pluginProperty] 
@@ -19642,8 +19642,8 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createExternalCharges(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<InvoiceItem>> {
-            return InvoiceApiFp(configuration).createExternalCharges(accountId, xKillbillCreatedBy, body, requestedDate, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createExternalCharges(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<InvoiceItem>> {
+            return InvoiceApiFp(configuration).createExternalCharges(body, accountId, xKillbillCreatedBy, requestedDate, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19662,9 +19662,9 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Trigger a payment for invoice
+         * @param {InvoicePayment} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePayment} body 
          * @param {boolean} [externalPayment] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -19672,58 +19672,58 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInstantPayment(invoiceId: string, xKillbillCreatedBy: string, body: InvoicePayment, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
-            return InvoiceApiFp(configuration).createInstantPayment(invoiceId, xKillbillCreatedBy, body, externalPayment, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createInstantPayment(body: InvoicePayment, invoiceId: string, xKillbillCreatedBy: string, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
+            return InvoiceApiFp(configuration).createInstantPayment(body, invoiceId, xKillbillCreatedBy, externalPayment, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add custom fields to invoice
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceCustomFields(invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return InvoiceApiFp(configuration).createInvoiceCustomFields(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createInvoiceCustomFields(body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return InvoiceApiFp(configuration).createInvoiceCustomFields(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add tags to invoice
+         * @param {Array<string>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceTags(invoiceId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
-            return InvoiceApiFp(configuration).createInvoiceTags(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createInvoiceTags(body: Array<string>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
+            return InvoiceApiFp(configuration).createInvoiceTags(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create a migration invoice
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {string} [targetDate] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createMigrationInvoice(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Invoice> {
-            return InvoiceApiFp(configuration).createMigrationInvoice(accountId, xKillbillCreatedBy, body, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createMigrationInvoice(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Invoice> {
+            return InvoiceApiFp(configuration).createMigrationInvoice(body, accountId, xKillbillCreatedBy, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create tax items
+         * @param {Array<InvoiceItem>} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<InvoiceItem>} body 
          * @param {boolean} [autoCommit] 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
@@ -19732,8 +19732,8 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTaxItems(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<InvoiceItem>> {
-            return InvoiceApiFp(configuration).createTaxItems(accountId, xKillbillCreatedBy, body, autoCommit, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createTaxItems(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<InvoiceItem>> {
+            return InvoiceApiFp(configuration).createTaxItems(body, accountId, xKillbillCreatedBy, autoCommit, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19781,17 +19781,17 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Generate a dryRun invoice
+         * @param {InvoiceDryRun} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoiceDryRun} body 
          * @param {string} [targetDate] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        generateDryRunInvoice(accountId: string, xKillbillCreatedBy: string, body: InvoiceDryRun, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Invoice> {
-            return InvoiceApiFp(configuration).generateDryRunInvoice(accountId, xKillbillCreatedBy, body, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        generateDryRunInvoice(body: InvoiceDryRun, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Invoice> {
+            return InvoiceApiFp(configuration).generateDryRunInvoice(body, accountId, xKillbillCreatedBy, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19939,16 +19939,16 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Modify custom fields to invoice
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyInvoiceCustomFields(invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return InvoiceApiFp(configuration).modifyInvoiceCustomFields(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyInvoiceCustomFields(body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return InvoiceApiFp(configuration).modifyInvoiceCustomFields(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19966,60 +19966,60 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Upload the catalog translation for the tenant
+         * @param {string} body 
          * @param {string} locale 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadCatalogTranslation(locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
-            return InvoiceApiFp(configuration).uploadCatalogTranslation(locale, xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadCatalogTranslation(body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
+            return InvoiceApiFp(configuration).uploadCatalogTranslation(body, locale, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Upload the manualPay invoice template for the tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadInvoiceMPTemplate(xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
-            return InvoiceApiFp(configuration).uploadInvoiceMPTemplate(xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadInvoiceMPTemplate(body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
+            return InvoiceApiFp(configuration).uploadInvoiceMPTemplate(body, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Upload the invoice template for the tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadInvoiceTemplate(xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
-            return InvoiceApiFp(configuration).uploadInvoiceTemplate(xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadInvoiceTemplate(body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
+            return InvoiceApiFp(configuration).uploadInvoiceTemplate(body, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Upload the invoice translation for the tenant
+         * @param {string} body 
          * @param {string} locale 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {boolean} [deleteIfExists] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadInvoiceTranslation(locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
-            return InvoiceApiFp(configuration).uploadInvoiceTranslation(locale, xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadInvoiceTranslation(body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
+            return InvoiceApiFp(configuration).uploadInvoiceTranslation(body, locale, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20047,9 +20047,9 @@ export class InvoiceApi extends BaseAPI {
     /**
      * 
      * @summary Adjust an invoice item
+     * @param {InvoiceItem} body 
      * @param {string} invoiceId 
      * @param {string} xKillbillCreatedBy 
-     * @param {InvoiceItem} body 
      * @param {string} [requestedDate] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -20058,8 +20058,8 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public adjustInvoiceItem(invoiceId: string, xKillbillCreatedBy: string, body: InvoiceItem, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).adjustInvoiceItem(invoiceId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public adjustInvoiceItem(body: InvoiceItem, invoiceId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).adjustInvoiceItem(body, invoiceId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20080,9 +20080,9 @@ export class InvoiceApi extends BaseAPI {
     /**
      * 
      * @summary Create external charge(s)
+     * @param {Array<InvoiceItem>} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<InvoiceItem>} body 
      * @param {string} [requestedDate] 
      * @param {boolean} [autoCommit] 
      * @param {Array<string>} [pluginProperty] 
@@ -20092,8 +20092,8 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public createExternalCharges(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).createExternalCharges(accountId, xKillbillCreatedBy, body, requestedDate, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createExternalCharges(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, requestedDate?: string, autoCommit?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).createExternalCharges(body, accountId, xKillbillCreatedBy, requestedDate, autoCommit, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20115,9 +20115,9 @@ export class InvoiceApi extends BaseAPI {
     /**
      * 
      * @summary Trigger a payment for invoice
+     * @param {InvoicePayment} body 
      * @param {string} invoiceId 
      * @param {string} xKillbillCreatedBy 
-     * @param {InvoicePayment} body 
      * @param {boolean} [externalPayment] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -20126,48 +20126,48 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public createInstantPayment(invoiceId: string, xKillbillCreatedBy: string, body: InvoicePayment, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).createInstantPayment(invoiceId, xKillbillCreatedBy, body, externalPayment, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createInstantPayment(body: InvoicePayment, invoiceId: string, xKillbillCreatedBy: string, externalPayment?: boolean, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).createInstantPayment(body, invoiceId, xKillbillCreatedBy, externalPayment, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add custom fields to invoice
+     * @param {Array<CustomField>} body 
      * @param {string} invoiceId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public createInvoiceCustomFields(invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).createInvoiceCustomFields(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createInvoiceCustomFields(body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).createInvoiceCustomFields(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add tags to invoice
+     * @param {Array<string>} body 
      * @param {string} invoiceId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public createInvoiceTags(invoiceId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).createInvoiceTags(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createInvoiceTags(body: Array<string>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).createInvoiceTags(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create a migration invoice
+     * @param {Array<InvoiceItem>} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<InvoiceItem>} body 
      * @param {string} [targetDate] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -20175,16 +20175,16 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public createMigrationInvoice(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).createMigrationInvoice(accountId, xKillbillCreatedBy, body, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createMigrationInvoice(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).createMigrationInvoice(body, accountId, xKillbillCreatedBy, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create tax items
+     * @param {Array<InvoiceItem>} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<InvoiceItem>} body 
      * @param {boolean} [autoCommit] 
      * @param {string} [requestedDate] 
      * @param {Array<string>} [pluginProperty] 
@@ -20194,8 +20194,8 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public createTaxItems(accountId: string, xKillbillCreatedBy: string, body: Array<InvoiceItem>, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).createTaxItems(accountId, xKillbillCreatedBy, body, autoCommit, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createTaxItems(body: Array<InvoiceItem>, accountId: string, xKillbillCreatedBy: string, autoCommit?: boolean, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).createTaxItems(body, accountId, xKillbillCreatedBy, autoCommit, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20250,9 +20250,9 @@ export class InvoiceApi extends BaseAPI {
     /**
      * 
      * @summary Generate a dryRun invoice
+     * @param {InvoiceDryRun} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {InvoiceDryRun} body 
      * @param {string} [targetDate] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -20260,8 +20260,8 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public generateDryRunInvoice(accountId: string, xKillbillCreatedBy: string, body: InvoiceDryRun, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).generateDryRunInvoice(accountId, xKillbillCreatedBy, body, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public generateDryRunInvoice(body: InvoiceDryRun, accountId: string, xKillbillCreatedBy: string, targetDate?: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).generateDryRunInvoice(body, accountId, xKillbillCreatedBy, targetDate, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20436,17 +20436,17 @@ export class InvoiceApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to invoice
+     * @param {Array<CustomField>} body 
      * @param {string} invoiceId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public modifyInvoiceCustomFields(invoiceId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).modifyInvoiceCustomFields(invoiceId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyInvoiceCustomFields(body: Array<CustomField>, invoiceId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).modifyInvoiceCustomFields(body, invoiceId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20467,9 +20467,9 @@ export class InvoiceApi extends BaseAPI {
     /**
      * 
      * @summary Upload the catalog translation for the tenant
+     * @param {string} body 
      * @param {string} locale 
      * @param {string} xKillbillCreatedBy 
-     * @param {string} body 
      * @param {boolean} [deleteIfExists] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -20477,15 +20477,15 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public uploadCatalogTranslation(locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).uploadCatalogTranslation(locale, xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadCatalogTranslation(body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).uploadCatalogTranslation(body, locale, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Upload the manualPay invoice template for the tenant
-     * @param {string} xKillbillCreatedBy 
      * @param {string} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {boolean} [deleteIfExists] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -20493,15 +20493,15 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public uploadInvoiceMPTemplate(xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).uploadInvoiceMPTemplate(xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadInvoiceMPTemplate(body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).uploadInvoiceMPTemplate(body, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Upload the invoice template for the tenant
-     * @param {string} xKillbillCreatedBy 
      * @param {string} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {boolean} [deleteIfExists] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -20509,16 +20509,16 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public uploadInvoiceTemplate(xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).uploadInvoiceTemplate(xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadInvoiceTemplate(body: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).uploadInvoiceTemplate(body, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Upload the invoice translation for the tenant
+     * @param {string} body 
      * @param {string} locale 
      * @param {string} xKillbillCreatedBy 
-     * @param {string} body 
      * @param {boolean} [deleteIfExists] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -20526,8 +20526,8 @@ export class InvoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoiceApi
      */
-    public uploadInvoiceTranslation(locale: string, xKillbillCreatedBy: string, body: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceApiFp(this.configuration).uploadInvoiceTranslation(locale, xKillbillCreatedBy, body, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadInvoiceTranslation(body: string, locale: string, xKillbillCreatedBy: string, deleteIfExists?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceApiFp(this.configuration).uploadInvoiceTranslation(body, locale, xKillbillCreatedBy, deleteIfExists, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20557,15 +20557,19 @@ export const InvoiceItemApiAxiosParamCreator = function (configuration?: Configu
         /**
          * 
          * @summary Add custom fields to invoice item
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceItemCustomFields: async (invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createInvoiceItemCustomFields: async (body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceItemCustomFields.');
+            }
             // verify required parameter 'invoiceItemId' is not null or undefined
             if (invoiceItemId === null || invoiceItemId === undefined) {
                 throw new RequiredError('invoiceItemId','Required parameter invoiceItemId was null or undefined when calling createInvoiceItemCustomFields.');
@@ -20573,10 +20577,6 @@ export const InvoiceItemApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createInvoiceItemCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceItemCustomFields.');
             }
             const localVarPath = `/1.0/kb/invoiceItems/{invoiceItemId}/customFields`
                 .replace(`{${"invoiceItemId"}}`, encodeURIComponent(String(invoiceItemId)));
@@ -20643,15 +20643,19 @@ export const InvoiceItemApiAxiosParamCreator = function (configuration?: Configu
         /**
          * 
          * @summary Add tags to invoice item
+         * @param {Array<string>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceItemTags: async (invoiceItemId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createInvoiceItemTags: async (body: Array<string>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceItemTags.');
+            }
             // verify required parameter 'invoiceItemId' is not null or undefined
             if (invoiceItemId === null || invoiceItemId === undefined) {
                 throw new RequiredError('invoiceItemId','Required parameter invoiceItemId was null or undefined when calling createInvoiceItemTags.');
@@ -20659,10 +20663,6 @@ export const InvoiceItemApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createInvoiceItemTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoiceItemTags.');
             }
             const localVarPath = `/1.0/kb/invoiceItems/{invoiceItemId}/tags`
                 .replace(`{${"invoiceItemId"}}`, encodeURIComponent(String(invoiceItemId)));
@@ -21091,15 +21091,19 @@ export const InvoiceItemApiAxiosParamCreator = function (configuration?: Configu
         /**
          * 
          * @summary Modify custom fields to invoice item
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyInvoiceItemCustomFields: async (invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyInvoiceItemCustomFields: async (body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyInvoiceItemCustomFields.');
+            }
             // verify required parameter 'invoiceItemId' is not null or undefined
             if (invoiceItemId === null || invoiceItemId === undefined) {
                 throw new RequiredError('invoiceItemId','Required parameter invoiceItemId was null or undefined when calling modifyInvoiceItemCustomFields.');
@@ -21107,10 +21111,6 @@ export const InvoiceItemApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyInvoiceItemCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyInvoiceItemCustomFields.');
             }
             const localVarPath = `/1.0/kb/invoiceItems/{invoiceItemId}/customFields`
                 .replace(`{${"invoiceItemId"}}`, encodeURIComponent(String(invoiceItemId)));
@@ -21186,16 +21186,16 @@ export const InvoiceItemApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to invoice item
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoiceItemCustomFields(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await InvoiceItemApiAxiosParamCreator(configuration).createInvoiceItemCustomFields(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createInvoiceItemCustomFields(body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await InvoiceItemApiAxiosParamCreator(configuration).createInvoiceItemCustomFields(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -21204,16 +21204,16 @@ export const InvoiceItemApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add tags to invoice item
+         * @param {Array<string>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoiceItemTags(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
-            const localVarAxiosArgs = await InvoiceItemApiAxiosParamCreator(configuration).createInvoiceItemTags(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createInvoiceItemTags(body: Array<string>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
+            const localVarAxiosArgs = await InvoiceItemApiAxiosParamCreator(configuration).createInvoiceItemTags(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -21304,16 +21304,16 @@ export const InvoiceItemApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to invoice item
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifyInvoiceItemCustomFields(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await InvoiceItemApiAxiosParamCreator(configuration).modifyInvoiceItemCustomFields(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifyInvoiceItemCustomFields(body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await InvoiceItemApiAxiosParamCreator(configuration).modifyInvoiceItemCustomFields(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -21331,30 +21331,30 @@ export const InvoiceItemApiFactory = function (configuration?: Configuration, ba
         /**
          * 
          * @summary Add custom fields to invoice item
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceItemCustomFields(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return InvoiceItemApiFp(configuration).createInvoiceItemCustomFields(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createInvoiceItemCustomFields(body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return InvoiceItemApiFp(configuration).createInvoiceItemCustomFields(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add tags to invoice item
+         * @param {Array<string>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoiceItemTags(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
-            return InvoiceItemApiFp(configuration).createInvoiceItemTags(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createInvoiceItemTags(body: Array<string>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
+            return InvoiceItemApiFp(configuration).createInvoiceItemTags(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -21421,16 +21421,16 @@ export const InvoiceItemApiFactory = function (configuration?: Configuration, ba
         /**
          * 
          * @summary Modify custom fields to invoice item
+         * @param {Array<CustomField>} body 
          * @param {string} invoiceItemId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyInvoiceItemCustomFields(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return InvoiceItemApiFp(configuration).modifyInvoiceItemCustomFields(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyInvoiceItemCustomFields(body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return InvoiceItemApiFp(configuration).modifyInvoiceItemCustomFields(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -21445,33 +21445,33 @@ export class InvoiceItemApi extends BaseAPI {
     /**
      * 
      * @summary Add custom fields to invoice item
+     * @param {Array<CustomField>} body 
      * @param {string} invoiceItemId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoiceItemApi
      */
-    public createInvoiceItemCustomFields(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceItemApiFp(this.configuration).createInvoiceItemCustomFields(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createInvoiceItemCustomFields(body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceItemApiFp(this.configuration).createInvoiceItemCustomFields(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add tags to invoice item
+     * @param {Array<string>} body 
      * @param {string} invoiceItemId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoiceItemApi
      */
-    public createInvoiceItemTags(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceItemApiFp(this.configuration).createInvoiceItemTags(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createInvoiceItemTags(body: Array<string>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceItemApiFp(this.configuration).createInvoiceItemTags(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -21549,17 +21549,17 @@ export class InvoiceItemApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to invoice item
+     * @param {Array<CustomField>} body 
      * @param {string} invoiceItemId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoiceItemApi
      */
-    public modifyInvoiceItemCustomFields(invoiceItemId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoiceItemApiFp(this.configuration).modifyInvoiceItemCustomFields(invoiceItemId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyInvoiceItemCustomFields(body: Array<CustomField>, invoiceItemId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoiceItemApiFp(this.configuration).modifyInvoiceItemCustomFields(body, invoiceItemId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -21574,9 +21574,9 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Complete an existing transaction
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -21584,7 +21584,11 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeInvoicePaymentTransaction: async (paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        completeInvoicePaymentTransaction: async (body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling completeInvoicePaymentTransaction.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling completeInvoicePaymentTransaction.');
@@ -21592,10 +21596,6 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling completeInvoicePaymentTransaction.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling completeInvoicePaymentTransaction.');
             }
             const localVarPath = `/1.0/kb/invoicePayments/{paymentId}`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -21670,16 +21670,20 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Record a chargeback
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createChargeback: async (paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createChargeback: async (body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createChargeback.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling createChargeback.');
@@ -21687,10 +21691,6 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createChargeback.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createChargeback.');
             }
             const localVarPath = `/1.0/kb/invoicePayments/{paymentId}/chargebacks`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -21761,16 +21761,20 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Record a chargebackReversal
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createChargebackReversal: async (paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createChargebackReversal: async (body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createChargebackReversal.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling createChargebackReversal.');
@@ -21778,10 +21782,6 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createChargebackReversal.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createChargebackReversal.');
             }
             const localVarPath = `/1.0/kb/invoicePayments/{paymentId}/chargebackReversals`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -21852,15 +21852,19 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Add custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoicePaymentCustomFields: async (paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createInvoicePaymentCustomFields: async (body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoicePaymentCustomFields.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling createInvoicePaymentCustomFields.');
@@ -21868,10 +21872,6 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createInvoicePaymentCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoicePaymentCustomFields.');
             }
             const localVarPath = `/1.0/kb/invoicePayments/{paymentId}/customFields`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -21938,15 +21938,19 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Add tags to payment
+         * @param {Array<string>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoicePaymentTags: async (paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createInvoicePaymentTags: async (body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoicePaymentTags.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling createInvoicePaymentTags.');
@@ -21954,10 +21958,6 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createInvoicePaymentTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createInvoicePaymentTags.');
             }
             const localVarPath = `/1.0/kb/invoicePayments/{paymentId}/tags`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -22024,9 +22024,9 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Refund a payment, and adjust the invoice if needed
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {boolean} [externalPayment] 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [pluginProperty] 
@@ -22035,7 +22035,11 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRefundWithAdjustments: async (paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createRefundWithAdjustments: async (body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createRefundWithAdjustments.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling createRefundWithAdjustments.');
@@ -22043,10 +22047,6 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createRefundWithAdjustments.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createRefundWithAdjustments.');
             }
             const localVarPath = `/1.0/kb/invoicePayments/{paymentId}/refunds`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -22561,15 +22561,19 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Modify custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyInvoicePaymentCustomFields: async (paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyInvoicePaymentCustomFields: async (body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyInvoicePaymentCustomFields.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling modifyInvoicePaymentCustomFields.');
@@ -22577,10 +22581,6 @@ export const InvoicePaymentApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyInvoicePaymentCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyInvoicePaymentCustomFields.');
             }
             const localVarPath = `/1.0/kb/invoicePayments/{paymentId}/customFields`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -22656,9 +22656,9 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Complete an existing transaction
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -22666,8 +22666,8 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async completeInvoicePaymentTransaction(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).completeInvoicePaymentTransaction(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async completeInvoicePaymentTransaction(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).completeInvoicePaymentTransaction(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -22676,17 +22676,17 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Record a chargeback
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createChargeback(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
-            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createChargeback(paymentId, xKillbillCreatedBy, body, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createChargeback(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
+            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createChargeback(body, paymentId, xKillbillCreatedBy, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -22695,17 +22695,17 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Record a chargebackReversal
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createChargebackReversal(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
-            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createChargebackReversal(paymentId, xKillbillCreatedBy, body, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createChargebackReversal(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
+            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createChargebackReversal(body, paymentId, xKillbillCreatedBy, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -22714,16 +22714,16 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoicePaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createInvoicePaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createInvoicePaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createInvoicePaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -22732,16 +22732,16 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add tags to payment
+         * @param {Array<string>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoicePaymentTags(paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
-            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createInvoicePaymentTags(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createInvoicePaymentTags(body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
+            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createInvoicePaymentTags(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -22750,9 +22750,9 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Refund a payment, and adjust the invoice if needed
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {boolean} [externalPayment] 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [pluginProperty] 
@@ -22761,8 +22761,8 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createRefundWithAdjustments(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
-            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createRefundWithAdjustments(paymentId, xKillbillCreatedBy, body, externalPayment, paymentMethodId, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createRefundWithAdjustments(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoicePayment>> {
+            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).createRefundWithAdjustments(body, paymentId, xKillbillCreatedBy, externalPayment, paymentMethodId, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -22871,16 +22871,16 @@ export const InvoicePaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifyInvoicePaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).modifyInvoicePaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifyInvoicePaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await InvoicePaymentApiAxiosParamCreator(configuration).modifyInvoicePaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -22898,9 +22898,9 @@ export const InvoicePaymentApiFactory = function (configuration?: Configuration,
         /**
          * 
          * @summary Complete an existing transaction
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -22908,73 +22908,73 @@ export const InvoicePaymentApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeInvoicePaymentTransaction(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return InvoicePaymentApiFp(configuration).completeInvoicePaymentTransaction(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        completeInvoicePaymentTransaction(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return InvoicePaymentApiFp(configuration).completeInvoicePaymentTransaction(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Record a chargeback
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createChargeback(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
-            return InvoicePaymentApiFp(configuration).createChargeback(paymentId, xKillbillCreatedBy, body, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createChargeback(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
+            return InvoicePaymentApiFp(configuration).createChargeback(body, paymentId, xKillbillCreatedBy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Record a chargebackReversal
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createChargebackReversal(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
-            return InvoicePaymentApiFp(configuration).createChargebackReversal(paymentId, xKillbillCreatedBy, body, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createChargebackReversal(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
+            return InvoicePaymentApiFp(configuration).createChargebackReversal(body, paymentId, xKillbillCreatedBy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoicePaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return InvoicePaymentApiFp(configuration).createInvoicePaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createInvoicePaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return InvoicePaymentApiFp(configuration).createInvoicePaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add tags to payment
+         * @param {Array<string>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoicePaymentTags(paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
-            return InvoicePaymentApiFp(configuration).createInvoicePaymentTags(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createInvoicePaymentTags(body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
+            return InvoicePaymentApiFp(configuration).createInvoicePaymentTags(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Refund a payment, and adjust the invoice if needed
+         * @param {InvoicePaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {InvoicePaymentTransaction} body 
          * @param {boolean} [externalPayment] 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [pluginProperty] 
@@ -22983,8 +22983,8 @@ export const InvoicePaymentApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRefundWithAdjustments(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
-            return InvoicePaymentApiFp(configuration).createRefundWithAdjustments(paymentId, xKillbillCreatedBy, body, externalPayment, paymentMethodId, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createRefundWithAdjustments(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<InvoicePayment> {
+            return InvoicePaymentApiFp(configuration).createRefundWithAdjustments(body, paymentId, xKillbillCreatedBy, externalPayment, paymentMethodId, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -23065,16 +23065,16 @@ export const InvoicePaymentApiFactory = function (configuration?: Configuration,
         /**
          * 
          * @summary Modify custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyInvoicePaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return InvoicePaymentApiFp(configuration).modifyInvoicePaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyInvoicePaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return InvoicePaymentApiFp(configuration).modifyInvoicePaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -23089,9 +23089,9 @@ export class InvoicePaymentApi extends BaseAPI {
     /**
      * 
      * @summary Complete an existing transaction
+     * @param {PaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -23100,16 +23100,16 @@ export class InvoicePaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicePaymentApi
      */
-    public completeInvoicePaymentTransaction(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoicePaymentApiFp(this.configuration).completeInvoicePaymentTransaction(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public completeInvoicePaymentTransaction(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoicePaymentApiFp(this.configuration).completeInvoicePaymentTransaction(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Record a chargeback
+     * @param {InvoicePaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {InvoicePaymentTransaction} body 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -23117,16 +23117,16 @@ export class InvoicePaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicePaymentApi
      */
-    public createChargeback(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoicePaymentApiFp(this.configuration).createChargeback(paymentId, xKillbillCreatedBy, body, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createChargeback(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoicePaymentApiFp(this.configuration).createChargeback(body, paymentId, xKillbillCreatedBy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Record a chargebackReversal
+     * @param {InvoicePaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {InvoicePaymentTransaction} body 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -23134,48 +23134,48 @@ export class InvoicePaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicePaymentApi
      */
-    public createChargebackReversal(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoicePaymentApiFp(this.configuration).createChargebackReversal(paymentId, xKillbillCreatedBy, body, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createChargebackReversal(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoicePaymentApiFp(this.configuration).createChargebackReversal(body, paymentId, xKillbillCreatedBy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add custom fields to payment
+     * @param {Array<CustomField>} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicePaymentApi
      */
-    public createInvoicePaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoicePaymentApiFp(this.configuration).createInvoicePaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createInvoicePaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoicePaymentApiFp(this.configuration).createInvoicePaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add tags to payment
+     * @param {Array<string>} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicePaymentApi
      */
-    public createInvoicePaymentTags(paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoicePaymentApiFp(this.configuration).createInvoicePaymentTags(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createInvoicePaymentTags(body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoicePaymentApiFp(this.configuration).createInvoicePaymentTags(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Refund a payment, and adjust the invoice if needed
+     * @param {InvoicePaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {InvoicePaymentTransaction} body 
      * @param {boolean} [externalPayment] 
      * @param {string} [paymentMethodId] 
      * @param {Array<string>} [pluginProperty] 
@@ -23185,8 +23185,8 @@ export class InvoicePaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicePaymentApi
      */
-    public createRefundWithAdjustments(paymentId: string, xKillbillCreatedBy: string, body: InvoicePaymentTransaction, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoicePaymentApiFp(this.configuration).createRefundWithAdjustments(paymentId, xKillbillCreatedBy, body, externalPayment, paymentMethodId, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createRefundWithAdjustments(body: InvoicePaymentTransaction, paymentId: string, xKillbillCreatedBy: string, externalPayment?: boolean, paymentMethodId?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoicePaymentApiFp(this.configuration).createRefundWithAdjustments(body, paymentId, xKillbillCreatedBy, externalPayment, paymentMethodId, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -23280,17 +23280,17 @@ export class InvoicePaymentApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to payment
+     * @param {Array<CustomField>} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicePaymentApi
      */
-    public modifyInvoicePaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return InvoicePaymentApiFp(this.configuration).modifyInvoicePaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyInvoicePaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return InvoicePaymentApiFp(this.configuration).modifyInvoicePaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -23341,22 +23341,22 @@ export const NodesInfoApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary Trigger a node command
-         * @param {string} xKillbillCreatedBy 
          * @param {NodeCommand} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [localNodeOnly] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        triggerNodeCommand: async (xKillbillCreatedBy: string, body: NodeCommand, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling triggerNodeCommand.');
-            }
+        triggerNodeCommand: async (body: NodeCommand, xKillbillCreatedBy: string, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling triggerNodeCommand.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling triggerNodeCommand.');
             }
             const localVarPath = `/1.0/kb/nodesInfo`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -23432,16 +23432,16 @@ export const NodesInfoApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Trigger a node command
-         * @param {string} xKillbillCreatedBy 
          * @param {NodeCommand} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [localNodeOnly] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async triggerNodeCommand(xKillbillCreatedBy: string, body: NodeCommand, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await NodesInfoApiAxiosParamCreator(configuration).triggerNodeCommand(xKillbillCreatedBy, body, localNodeOnly, xKillbillReason, xKillbillComment, options);
+        async triggerNodeCommand(body: NodeCommand, xKillbillCreatedBy: string, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await NodesInfoApiAxiosParamCreator(configuration).triggerNodeCommand(body, xKillbillCreatedBy, localNodeOnly, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -23468,16 +23468,16 @@ export const NodesInfoApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @summary Trigger a node command
-         * @param {string} xKillbillCreatedBy 
          * @param {NodeCommand} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [localNodeOnly] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        triggerNodeCommand(xKillbillCreatedBy: string, body: NodeCommand, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return NodesInfoApiFp(configuration).triggerNodeCommand(xKillbillCreatedBy, body, localNodeOnly, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        triggerNodeCommand(body: NodeCommand, xKillbillCreatedBy: string, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return NodesInfoApiFp(configuration).triggerNodeCommand(body, xKillbillCreatedBy, localNodeOnly, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -23503,8 +23503,8 @@ export class NodesInfoApi extends BaseAPI {
     /**
      * 
      * @summary Trigger a node command
-     * @param {string} xKillbillCreatedBy 
      * @param {NodeCommand} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {boolean} [localNodeOnly] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -23512,8 +23512,8 @@ export class NodesInfoApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof NodesInfoApi
      */
-    public triggerNodeCommand(xKillbillCreatedBy: string, body: NodeCommand, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return NodesInfoApiFp(this.configuration).triggerNodeCommand(xKillbillCreatedBy, body, localNodeOnly, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public triggerNodeCommand(body: NodeCommand, xKillbillCreatedBy: string, localNodeOnly?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return NodesInfoApiFp(this.configuration).triggerNodeCommand(body, xKillbillCreatedBy, localNodeOnly, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -23632,21 +23632,21 @@ export const OverdueApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Upload the full overdue config as JSON
-         * @param {string} xKillbillCreatedBy 
          * @param {Overdue} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadOverdueConfigJson: async (xKillbillCreatedBy: string, body: Overdue, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadOverdueConfigJson.');
-            }
+        uploadOverdueConfigJson: async (body: Overdue, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling uploadOverdueConfigJson.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadOverdueConfigJson.');
             }
             const localVarPath = `/1.0/kb/overdue`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -23712,21 +23712,21 @@ export const OverdueApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Upload the full overdue config as XML
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadOverdueConfigXml: async (xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadOverdueConfigXml.');
-            }
+        uploadOverdueConfigXml: async (body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling uploadOverdueConfigXml.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadOverdueConfigXml.');
             }
             const localVarPath = `/1.0/kb/overdue/xml`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -23827,15 +23827,15 @@ export const OverdueApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Upload the full overdue config as JSON
-         * @param {string} xKillbillCreatedBy 
          * @param {Overdue} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadOverdueConfigJson(xKillbillCreatedBy: string, body: Overdue, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Overdue>> {
-            const localVarAxiosArgs = await OverdueApiAxiosParamCreator(configuration).uploadOverdueConfigJson(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async uploadOverdueConfigJson(body: Overdue, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Overdue>> {
+            const localVarAxiosArgs = await OverdueApiAxiosParamCreator(configuration).uploadOverdueConfigJson(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -23844,15 +23844,15 @@ export const OverdueApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Upload the full overdue config as XML
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadOverdueConfigXml(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await OverdueApiAxiosParamCreator(configuration).uploadOverdueConfigXml(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async uploadOverdueConfigXml(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await OverdueApiAxiosParamCreator(configuration).uploadOverdueConfigXml(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -23888,28 +23888,28 @@ export const OverdueApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Upload the full overdue config as JSON
-         * @param {string} xKillbillCreatedBy 
          * @param {Overdue} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadOverdueConfigJson(xKillbillCreatedBy: string, body: Overdue, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Overdue> {
-            return OverdueApiFp(configuration).uploadOverdueConfigJson(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadOverdueConfigJson(body: Overdue, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Overdue> {
+            return OverdueApiFp(configuration).uploadOverdueConfigJson(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Upload the full overdue config as XML
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadOverdueConfigXml(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
-            return OverdueApiFp(configuration).uploadOverdueConfigXml(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadOverdueConfigXml(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<string> {
+            return OverdueApiFp(configuration).uploadOverdueConfigXml(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -23946,31 +23946,31 @@ export class OverdueApi extends BaseAPI {
     /**
      * 
      * @summary Upload the full overdue config as JSON
-     * @param {string} xKillbillCreatedBy 
      * @param {Overdue} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OverdueApi
      */
-    public uploadOverdueConfigJson(xKillbillCreatedBy: string, body: Overdue, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return OverdueApiFp(this.configuration).uploadOverdueConfigJson(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadOverdueConfigJson(body: Overdue, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return OverdueApiFp(this.configuration).uploadOverdueConfigJson(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Upload the full overdue config as XML
-     * @param {string} xKillbillCreatedBy 
      * @param {string} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OverdueApi
      */
-    public uploadOverdueConfigXml(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return OverdueApiFp(this.configuration).uploadOverdueConfigXml(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadOverdueConfigXml(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return OverdueApiFp(this.configuration).uploadOverdueConfigXml(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -24142,9 +24142,9 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Capture an existing authorization
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24152,7 +24152,11 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        captureAuthorization: async (paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        captureAuthorization: async (body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling captureAuthorization.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling captureAuthorization.');
@@ -24160,10 +24164,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling captureAuthorization.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling captureAuthorization.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -24238,8 +24238,8 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Capture an existing authorization
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24247,14 +24247,14 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        captureAuthorizationByExternalKey: async (xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling captureAuthorizationByExternalKey.');
-            }
+        captureAuthorizationByExternalKey: async (body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling captureAuthorizationByExternalKey.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling captureAuthorizationByExternalKey.');
             }
             const localVarPath = `/1.0/kb/payments`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -24328,9 +24328,9 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Record a chargeback
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24338,7 +24338,11 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackPayment: async (paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        chargebackPayment: async (body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling chargebackPayment.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling chargebackPayment.');
@@ -24346,10 +24350,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling chargebackPayment.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling chargebackPayment.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}/chargebacks`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -24424,8 +24424,8 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Record a chargeback
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24433,14 +24433,14 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackPaymentByExternalKey: async (xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling chargebackPaymentByExternalKey.');
-            }
+        chargebackPaymentByExternalKey: async (body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling chargebackPaymentByExternalKey.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling chargebackPaymentByExternalKey.');
             }
             const localVarPath = `/1.0/kb/payments/chargebacks`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -24514,9 +24514,9 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Record a chargeback reversal
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24524,7 +24524,11 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackReversalPayment: async (paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        chargebackReversalPayment: async (body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling chargebackReversalPayment.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling chargebackReversalPayment.');
@@ -24532,10 +24536,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling chargebackReversalPayment.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling chargebackReversalPayment.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}/chargebackReversals`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -24610,8 +24610,8 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Record a chargeback reversal
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24619,14 +24619,14 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackReversalPaymentByExternalKey: async (xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling chargebackReversalPaymentByExternalKey.');
-            }
+        chargebackReversalPaymentByExternalKey: async (body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling chargebackReversalPaymentByExternalKey.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling chargebackReversalPaymentByExternalKey.');
             }
             const localVarPath = `/1.0/kb/payments/chargebackReversals`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -24700,9 +24700,9 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Complete an existing transaction
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24710,7 +24710,11 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeTransaction: async (paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        completeTransaction: async (body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling completeTransaction.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling completeTransaction.');
@@ -24718,10 +24722,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling completeTransaction.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling completeTransaction.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -24796,8 +24796,8 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Complete an existing transaction
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -24805,14 +24805,14 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeTransactionByExternalKey: async (xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling completeTransactionByExternalKey.');
-            }
+        completeTransactionByExternalKey: async (body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling completeTransactionByExternalKey.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling completeTransactionByExternalKey.');
             }
             const localVarPath = `/1.0/kb/payments`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -24886,22 +24886,22 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Combo api to create a new payment transaction on a existing (or not) account 
-         * @param {string} xKillbillCreatedBy 
          * @param {ComboPaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createComboPayment: async (xKillbillCreatedBy: string, body: ComboPaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createComboPayment.');
-            }
+        createComboPayment: async (body: ComboPaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createComboPayment.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createComboPayment.');
             }
             const localVarPath = `/1.0/kb/payments/combo`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -24971,15 +24971,19 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentCustomFields: async (paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createPaymentCustomFields: async (body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentCustomFields.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling createPaymentCustomFields.');
@@ -24987,10 +24991,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createPaymentCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentCustomFields.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}/customFields`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -25057,15 +25057,19 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Add tags to payment payment
+         * @param {Array<string>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentTags: async (paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createPaymentTags: async (body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentTags.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling createPaymentTags.');
@@ -25073,10 +25077,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createPaymentTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentTags.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}/tags`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -25800,15 +25800,19 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Modify custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyPaymentCustomFields: async (paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyPaymentCustomFields: async (body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyPaymentCustomFields.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling modifyPaymentCustomFields.');
@@ -25816,10 +25820,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyPaymentCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyPaymentCustomFields.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}/customFields`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -25886,9 +25886,9 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Refund an existing payment
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -25896,7 +25896,11 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refundPayment: async (paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        refundPayment: async (body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling refundPayment.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling refundPayment.');
@@ -25904,10 +25908,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling refundPayment.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling refundPayment.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}/refunds`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -25982,8 +25982,8 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Refund an existing payment
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -25991,14 +25991,14 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refundPaymentByExternalKey: async (xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling refundPaymentByExternalKey.');
-            }
+        refundPaymentByExternalKey: async (body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling refundPaymentByExternalKey.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling refundPaymentByExternalKey.');
             }
             const localVarPath = `/1.0/kb/payments/refunds`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -26165,9 +26165,9 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Void an existing payment
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26175,7 +26175,11 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        voidPayment: async (paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        voidPayment: async (body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling voidPayment.');
+            }
             // verify required parameter 'paymentId' is not null or undefined
             if (paymentId === null || paymentId === undefined) {
                 throw new RequiredError('paymentId','Required parameter paymentId was null or undefined when calling voidPayment.');
@@ -26183,10 +26187,6 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling voidPayment.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling voidPayment.');
             }
             const localVarPath = `/1.0/kb/payments/{paymentId}`
                 .replace(`{${"paymentId"}}`, encodeURIComponent(String(paymentId)));
@@ -26261,8 +26261,8 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Void an existing payment
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26270,14 +26270,14 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        voidPaymentByExternalKey: async (xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling voidPaymentByExternalKey.');
-            }
+        voidPaymentByExternalKey: async (body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling voidPaymentByExternalKey.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling voidPaymentByExternalKey.');
             }
             const localVarPath = `/1.0/kb/payments`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -26394,9 +26394,9 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Capture an existing authorization
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26404,8 +26404,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async captureAuthorization(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).captureAuthorization(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async captureAuthorization(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).captureAuthorization(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26414,8 +26414,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Capture an existing authorization
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26423,8 +26423,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async captureAuthorizationByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).captureAuthorizationByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async captureAuthorizationByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).captureAuthorizationByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26433,9 +26433,9 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Record a chargeback
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26443,8 +26443,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async chargebackPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async chargebackPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26453,8 +26453,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Record a chargeback
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26462,8 +26462,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async chargebackPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async chargebackPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26472,9 +26472,9 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Record a chargeback reversal
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26482,8 +26482,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async chargebackReversalPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackReversalPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async chargebackReversalPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackReversalPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26492,8 +26492,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Record a chargeback reversal
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26501,8 +26501,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async chargebackReversalPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackReversalPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async chargebackReversalPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).chargebackReversalPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26511,9 +26511,9 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Complete an existing transaction
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26521,8 +26521,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async completeTransaction(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).completeTransaction(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async completeTransaction(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).completeTransaction(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26531,8 +26531,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Complete an existing transaction
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26540,8 +26540,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async completeTransactionByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).completeTransactionByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async completeTransactionByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).completeTransactionByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26550,16 +26550,16 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Combo api to create a new payment transaction on a existing (or not) account 
-         * @param {string} xKillbillCreatedBy 
          * @param {ComboPaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createComboPayment(xKillbillCreatedBy: string, body: ComboPaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).createComboPayment(xKillbillCreatedBy, body, controlPluginName, xKillbillReason, xKillbillComment, options);
+        async createComboPayment(body: ComboPaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).createComboPayment(body, xKillbillCreatedBy, controlPluginName, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26568,16 +26568,16 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).createPaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createPaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).createPaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26586,16 +26586,16 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add tags to payment payment
+         * @param {Array<string>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPaymentTags(paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).createPaymentTags(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createPaymentTags(body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).createPaymentTags(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26755,36 +26755,16 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to payment
-         * @param {string} paymentId 
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<CustomField>} body 
-         * @param {string} [xKillbillReason] 
-         * @param {string} [xKillbillComment] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async modifyPaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).modifyPaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @summary Refund an existing payment
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
-         * @param {Array<string>} [controlPluginName] 
-         * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refundPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).refundPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async modifyPaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).modifyPaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26793,8 +26773,9 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Refund an existing payment
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} paymentId 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26802,8 +26783,27 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refundPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).refundPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async refundPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).refundPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Refund an existing payment
+         * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
+         * @param {Array<string>} [controlPluginName] 
+         * @param {Array<string>} [pluginProperty] 
+         * @param {string} [xKillbillReason] 
+         * @param {string} [xKillbillComment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async refundPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).refundPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26833,9 +26833,9 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Void an existing payment
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26843,8 +26843,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async voidPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).voidPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async voidPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).voidPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26853,8 +26853,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Void an existing payment
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26862,8 +26862,8 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async voidPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).voidPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async voidPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentApiAxiosParamCreator(configuration).voidPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -26907,9 +26907,9 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Capture an existing authorization
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26917,14 +26917,14 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        captureAuthorization(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).captureAuthorization(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        captureAuthorization(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).captureAuthorization(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Capture an existing authorization
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26932,15 +26932,15 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        captureAuthorizationByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).captureAuthorizationByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        captureAuthorizationByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).captureAuthorizationByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Record a chargeback
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26948,14 +26948,14 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).chargebackPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        chargebackPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).chargebackPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Record a chargeback
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26963,15 +26963,15 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).chargebackPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        chargebackPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).chargebackPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Record a chargeback reversal
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26979,14 +26979,14 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackReversalPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).chargebackReversalPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        chargebackReversalPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).chargebackReversalPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Record a chargeback reversal
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -26994,15 +26994,15 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        chargebackReversalPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).chargebackReversalPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        chargebackReversalPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).chargebackReversalPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Complete an existing transaction
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -27010,14 +27010,14 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeTransaction(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentApiFp(configuration).completeTransaction(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        completeTransaction(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentApiFp(configuration).completeTransaction(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Complete an existing transaction
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -27025,50 +27025,50 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeTransactionByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentApiFp(configuration).completeTransactionByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        completeTransactionByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentApiFp(configuration).completeTransactionByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Combo api to create a new payment transaction on a existing (or not) account 
-         * @param {string} xKillbillCreatedBy 
          * @param {ComboPaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createComboPayment(xKillbillCreatedBy: string, body: ComboPaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).createComboPayment(xKillbillCreatedBy, body, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createComboPayment(body: ComboPaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).createComboPayment(body, xKillbillCreatedBy, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add custom fields to payment
+         * @param {Array<CustomField>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return PaymentApiFp(configuration).createPaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createPaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return PaymentApiFp(configuration).createPaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add tags to payment payment
+         * @param {Array<string>} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentTags(paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
-            return PaymentApiFp(configuration).createPaymentTags(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createPaymentTags(body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
+            return PaymentApiFp(configuration).createPaymentTags(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -27188,38 +27188,23 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Modify custom fields to payment
-         * @param {string} paymentId 
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<CustomField>} body 
-         * @param {string} [xKillbillReason] 
-         * @param {string} [xKillbillComment] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        modifyPaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentApiFp(configuration).modifyPaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Refund an existing payment
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
-         * @param {Array<string>} [controlPluginName] 
-         * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refundPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).refundPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyPaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentApiFp(configuration).modifyPaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Refund an existing payment
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} paymentId 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -27227,8 +27212,23 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refundPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentApiFp(configuration).refundPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        refundPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).refundPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Refund an existing payment
+         * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
+         * @param {Array<string>} [controlPluginName] 
+         * @param {Array<string>} [pluginProperty] 
+         * @param {string} [xKillbillReason] 
+         * @param {string} [xKillbillComment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refundPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentApiFp(configuration).refundPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -27250,9 +27250,9 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Void an existing payment
+         * @param {PaymentTransaction} body 
          * @param {string} paymentId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -27260,14 +27260,14 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        voidPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentApiFp(configuration).voidPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        voidPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentApiFp(configuration).voidPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Void an existing payment
-         * @param {string} xKillbillCreatedBy 
          * @param {PaymentTransaction} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -27275,8 +27275,8 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        voidPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentApiFp(configuration).voidPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        voidPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentApiFp(configuration).voidPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -27321,9 +27321,9 @@ export class PaymentApi extends BaseAPI {
     /**
      * 
      * @summary Capture an existing authorization
+     * @param {PaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27332,15 +27332,15 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public captureAuthorization(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).captureAuthorization(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public captureAuthorization(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).captureAuthorization(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Capture an existing authorization
-     * @param {string} xKillbillCreatedBy 
      * @param {PaymentTransaction} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27349,16 +27349,16 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public captureAuthorizationByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).captureAuthorizationByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public captureAuthorizationByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).captureAuthorizationByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Record a chargeback
+     * @param {PaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27367,15 +27367,15 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public chargebackPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).chargebackPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public chargebackPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).chargebackPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Record a chargeback
-     * @param {string} xKillbillCreatedBy 
      * @param {PaymentTransaction} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27384,16 +27384,16 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public chargebackPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).chargebackPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public chargebackPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).chargebackPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Record a chargeback reversal
+     * @param {PaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27402,15 +27402,15 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public chargebackReversalPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).chargebackReversalPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public chargebackReversalPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).chargebackReversalPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Record a chargeback reversal
-     * @param {string} xKillbillCreatedBy 
      * @param {PaymentTransaction} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27419,16 +27419,16 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public chargebackReversalPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).chargebackReversalPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public chargebackReversalPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).chargebackReversalPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Complete an existing transaction
+     * @param {PaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27437,15 +27437,15 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public completeTransaction(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).completeTransaction(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public completeTransaction(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).completeTransaction(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Complete an existing transaction
-     * @param {string} xKillbillCreatedBy 
      * @param {PaymentTransaction} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27454,15 +27454,15 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public completeTransactionByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).completeTransactionByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public completeTransactionByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).completeTransactionByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Combo api to create a new payment transaction on a existing (or not) account 
-     * @param {string} xKillbillCreatedBy 
      * @param {ComboPaymentTransaction} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -27470,40 +27470,40 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public createComboPayment(xKillbillCreatedBy: string, body: ComboPaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).createComboPayment(xKillbillCreatedBy, body, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createComboPayment(body: ComboPaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).createComboPayment(body, xKillbillCreatedBy, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add custom fields to payment
+     * @param {Array<CustomField>} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public createPaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).createPaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createPaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).createPaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add tags to payment payment
+     * @param {Array<string>} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public createPaymentTags(paymentId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).createPaymentTags(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createPaymentTags(body: Array<string>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).createPaymentTags(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -27642,42 +27642,25 @@ export class PaymentApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to payment
-     * @param {string} paymentId 
-     * @param {string} xKillbillCreatedBy 
      * @param {Array<CustomField>} body 
-     * @param {string} [xKillbillReason] 
-     * @param {string} [xKillbillComment] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentApi
-     */
-    public modifyPaymentCustomFields(paymentId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).modifyPaymentCustomFields(paymentId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Refund an existing payment
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
-     * @param {Array<string>} [controlPluginName] 
-     * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public refundPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).refundPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyPaymentCustomFields(body: Array<CustomField>, paymentId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).modifyPaymentCustomFields(body, paymentId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Refund an existing payment
-     * @param {string} xKillbillCreatedBy 
      * @param {PaymentTransaction} body 
+     * @param {string} paymentId 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27686,8 +27669,25 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public refundPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).refundPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public refundPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).refundPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Refund an existing payment
+     * @param {PaymentTransaction} body 
+     * @param {string} xKillbillCreatedBy 
+     * @param {Array<string>} [controlPluginName] 
+     * @param {Array<string>} [pluginProperty] 
+     * @param {string} [xKillbillReason] 
+     * @param {string} [xKillbillComment] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaymentApi
+     */
+    public refundPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).refundPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -27712,9 +27712,9 @@ export class PaymentApi extends BaseAPI {
     /**
      * 
      * @summary Void an existing payment
+     * @param {PaymentTransaction} body 
      * @param {string} paymentId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27723,15 +27723,15 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public voidPayment(paymentId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).voidPayment(paymentId, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public voidPayment(body: PaymentTransaction, paymentId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).voidPayment(body, paymentId, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Void an existing payment
-     * @param {string} xKillbillCreatedBy 
      * @param {PaymentTransaction} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -27740,8 +27740,8 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public voidPaymentByExternalKey(xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentApiFp(this.configuration).voidPaymentByExternalKey(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public voidPaymentByExternalKey(body: PaymentTransaction, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentApiFp(this.configuration).voidPaymentByExternalKey(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -27756,8 +27756,8 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Combo API to generate form data to redirect the customer to the gateway
-         * @param {string} xKillbillCreatedBy 
          * @param {ComboHostedPaymentPage} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -27765,14 +27765,14 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buildComboFormDescriptor: async (xKillbillCreatedBy: string, body: ComboHostedPaymentPage, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling buildComboFormDescriptor.');
-            }
+        buildComboFormDescriptor: async (body: ComboHostedPaymentPage, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling buildComboFormDescriptor.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling buildComboFormDescriptor.');
             }
             const localVarPath = `/1.0/kb/paymentGateways/hosted/form`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -27846,9 +27846,9 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Generate form data to redirect the customer to the gateway
+         * @param {HostedPaymentPageFields} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {HostedPaymentPageFields} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -27857,7 +27857,11 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buildFormDescriptor: async (accountId: string, xKillbillCreatedBy: string, body: HostedPaymentPageFields, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        buildFormDescriptor: async (body: HostedPaymentPageFields, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling buildFormDescriptor.');
+            }
             // verify required parameter 'accountId' is not null or undefined
             if (accountId === null || accountId === undefined) {
                 throw new RequiredError('accountId','Required parameter accountId was null or undefined when calling buildFormDescriptor.');
@@ -27865,10 +27869,6 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling buildFormDescriptor.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling buildFormDescriptor.');
             }
             const localVarPath = `/1.0/kb/paymentGateways/hosted/form/{accountId}`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
@@ -27947,9 +27947,9 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
         /**
          * The response is built by the appropriate plugin
          * @summary Process a gateway notification
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -27957,7 +27957,11 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processNotification: async (pluginName: string, xKillbillCreatedBy: string, body: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        processNotification: async (body: string, pluginName: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling processNotification.');
+            }
             // verify required parameter 'pluginName' is not null or undefined
             if (pluginName === null || pluginName === undefined) {
                 throw new RequiredError('pluginName','Required parameter pluginName was null or undefined when calling processNotification.');
@@ -27965,10 +27969,6 @@ export const PaymentGatewayApiAxiosParamCreator = function (configuration?: Conf
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling processNotification.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling processNotification.');
             }
             const localVarPath = `/1.0/kb/paymentGateways/notification/{pluginName}`
                 .replace(`{${"pluginName"}}`, encodeURIComponent(String(pluginName)));
@@ -28052,8 +28052,8 @@ export const PaymentGatewayApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Combo API to generate form data to redirect the customer to the gateway
-         * @param {string} xKillbillCreatedBy 
          * @param {ComboHostedPaymentPage} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -28061,8 +28061,8 @@ export const PaymentGatewayApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async buildComboFormDescriptor(xKillbillCreatedBy: string, body: ComboHostedPaymentPage, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HostedPaymentPageFormDescriptor>> {
-            const localVarAxiosArgs = await PaymentGatewayApiAxiosParamCreator(configuration).buildComboFormDescriptor(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async buildComboFormDescriptor(body: ComboHostedPaymentPage, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HostedPaymentPageFormDescriptor>> {
+            const localVarAxiosArgs = await PaymentGatewayApiAxiosParamCreator(configuration).buildComboFormDescriptor(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -28071,9 +28071,9 @@ export const PaymentGatewayApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Generate form data to redirect the customer to the gateway
+         * @param {HostedPaymentPageFields} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {HostedPaymentPageFields} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -28082,8 +28082,8 @@ export const PaymentGatewayApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async buildFormDescriptor(accountId: string, xKillbillCreatedBy: string, body: HostedPaymentPageFields, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HostedPaymentPageFormDescriptor>> {
-            const localVarAxiosArgs = await PaymentGatewayApiAxiosParamCreator(configuration).buildFormDescriptor(accountId, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async buildFormDescriptor(body: HostedPaymentPageFields, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HostedPaymentPageFormDescriptor>> {
+            const localVarAxiosArgs = await PaymentGatewayApiAxiosParamCreator(configuration).buildFormDescriptor(body, accountId, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -28092,9 +28092,9 @@ export const PaymentGatewayApiFp = function(configuration?: Configuration) {
         /**
          * The response is built by the appropriate plugin
          * @summary Process a gateway notification
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -28102,8 +28102,8 @@ export const PaymentGatewayApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processNotification(pluginName: string, xKillbillCreatedBy: string, body: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentGatewayApiAxiosParamCreator(configuration).processNotification(pluginName, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async processNotification(body: string, pluginName: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentGatewayApiAxiosParamCreator(configuration).processNotification(body, pluginName, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -28121,8 +28121,8 @@ export const PaymentGatewayApiFactory = function (configuration?: Configuration,
         /**
          * 
          * @summary Combo API to generate form data to redirect the customer to the gateway
-         * @param {string} xKillbillCreatedBy 
          * @param {ComboHostedPaymentPage} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -28130,15 +28130,15 @@ export const PaymentGatewayApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buildComboFormDescriptor(xKillbillCreatedBy: string, body: ComboHostedPaymentPage, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<HostedPaymentPageFormDescriptor> {
-            return PaymentGatewayApiFp(configuration).buildComboFormDescriptor(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        buildComboFormDescriptor(body: ComboHostedPaymentPage, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<HostedPaymentPageFormDescriptor> {
+            return PaymentGatewayApiFp(configuration).buildComboFormDescriptor(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Generate form data to redirect the customer to the gateway
+         * @param {HostedPaymentPageFields} body 
          * @param {string} accountId 
          * @param {string} xKillbillCreatedBy 
-         * @param {HostedPaymentPageFields} body 
          * @param {string} [paymentMethodId] 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
@@ -28147,15 +28147,15 @@ export const PaymentGatewayApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buildFormDescriptor(accountId: string, xKillbillCreatedBy: string, body: HostedPaymentPageFields, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<HostedPaymentPageFormDescriptor> {
-            return PaymentGatewayApiFp(configuration).buildFormDescriptor(accountId, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        buildFormDescriptor(body: HostedPaymentPageFields, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<HostedPaymentPageFormDescriptor> {
+            return PaymentGatewayApiFp(configuration).buildFormDescriptor(body, accountId, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * The response is built by the appropriate plugin
          * @summary Process a gateway notification
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -28163,8 +28163,8 @@ export const PaymentGatewayApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processNotification(pluginName: string, xKillbillCreatedBy: string, body: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentGatewayApiFp(configuration).processNotification(pluginName, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        processNotification(body: string, pluginName: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentGatewayApiFp(configuration).processNotification(body, pluginName, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -28179,8 +28179,8 @@ export class PaymentGatewayApi extends BaseAPI {
     /**
      * 
      * @summary Combo API to generate form data to redirect the customer to the gateway
-     * @param {string} xKillbillCreatedBy 
      * @param {ComboHostedPaymentPage} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -28189,16 +28189,16 @@ export class PaymentGatewayApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentGatewayApi
      */
-    public buildComboFormDescriptor(xKillbillCreatedBy: string, body: ComboHostedPaymentPage, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentGatewayApiFp(this.configuration).buildComboFormDescriptor(xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public buildComboFormDescriptor(body: ComboHostedPaymentPage, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentGatewayApiFp(this.configuration).buildComboFormDescriptor(body, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Generate form data to redirect the customer to the gateway
+     * @param {HostedPaymentPageFields} body 
      * @param {string} accountId 
      * @param {string} xKillbillCreatedBy 
-     * @param {HostedPaymentPageFields} body 
      * @param {string} [paymentMethodId] 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
@@ -28208,16 +28208,16 @@ export class PaymentGatewayApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentGatewayApi
      */
-    public buildFormDescriptor(accountId: string, xKillbillCreatedBy: string, body: HostedPaymentPageFields, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentGatewayApiFp(this.configuration).buildFormDescriptor(accountId, xKillbillCreatedBy, body, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public buildFormDescriptor(body: HostedPaymentPageFields, accountId: string, xKillbillCreatedBy: string, paymentMethodId?: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentGatewayApiFp(this.configuration).buildFormDescriptor(body, accountId, xKillbillCreatedBy, paymentMethodId, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * The response is built by the appropriate plugin
      * @summary Process a gateway notification
+     * @param {string} body 
      * @param {string} pluginName 
      * @param {string} xKillbillCreatedBy 
-     * @param {string} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -28226,8 +28226,8 @@ export class PaymentGatewayApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentGatewayApi
      */
-    public processNotification(pluginName: string, xKillbillCreatedBy: string, body: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentGatewayApiFp(this.configuration).processNotification(pluginName, xKillbillCreatedBy, body, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public processNotification(body: string, pluginName: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentGatewayApiFp(this.configuration).processNotification(body, pluginName, xKillbillCreatedBy, controlPluginName, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -28242,15 +28242,19 @@ export const PaymentMethodApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @summary Add custom fields to payment method
+         * @param {Array<CustomField>} body 
          * @param {string} paymentMethodId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentMethodCustomFields: async (paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createPaymentMethodCustomFields: async (body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentMethodCustomFields.');
+            }
             // verify required parameter 'paymentMethodId' is not null or undefined
             if (paymentMethodId === null || paymentMethodId === undefined) {
                 throw new RequiredError('paymentMethodId','Required parameter paymentMethodId was null or undefined when calling createPaymentMethodCustomFields.');
@@ -28258,10 +28262,6 @@ export const PaymentMethodApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createPaymentMethodCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createPaymentMethodCustomFields.');
             }
             const localVarPath = `/1.0/kb/paymentMethods/{paymentMethodId}/customFields`
                 .replace(`{${"paymentMethodId"}}`, encodeURIComponent(String(paymentMethodId)));
@@ -28864,15 +28864,19 @@ export const PaymentMethodApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @summary Modify custom fields to payment method
+         * @param {Array<CustomField>} body 
          * @param {string} paymentMethodId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyPaymentMethodCustomFields: async (paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyPaymentMethodCustomFields: async (body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyPaymentMethodCustomFields.');
+            }
             // verify required parameter 'paymentMethodId' is not null or undefined
             if (paymentMethodId === null || paymentMethodId === undefined) {
                 throw new RequiredError('paymentMethodId','Required parameter paymentMethodId was null or undefined when calling modifyPaymentMethodCustomFields.');
@@ -28880,10 +28884,6 @@ export const PaymentMethodApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyPaymentMethodCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyPaymentMethodCustomFields.');
             }
             const localVarPath = `/1.0/kb/paymentMethods/{paymentMethodId}/customFields`
                 .replace(`{${"paymentMethodId"}}`, encodeURIComponent(String(paymentMethodId)));
@@ -29047,16 +29047,16 @@ export const PaymentMethodApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to payment method
+         * @param {Array<CustomField>} body 
          * @param {string} paymentMethodId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPaymentMethodCustomFields(paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await PaymentMethodApiAxiosParamCreator(configuration).createPaymentMethodCustomFields(paymentMethodId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createPaymentMethodCustomFields(body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await PaymentMethodApiAxiosParamCreator(configuration).createPaymentMethodCustomFields(body, paymentMethodId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -29187,16 +29187,16 @@ export const PaymentMethodApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to payment method
+         * @param {Array<CustomField>} body 
          * @param {string} paymentMethodId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifyPaymentMethodCustomFields(paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentMethodApiAxiosParamCreator(configuration).modifyPaymentMethodCustomFields(paymentMethodId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifyPaymentMethodCustomFields(body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentMethodApiAxiosParamCreator(configuration).modifyPaymentMethodCustomFields(body, paymentMethodId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -29234,16 +29234,16 @@ export const PaymentMethodApiFactory = function (configuration?: Configuration, 
         /**
          * 
          * @summary Add custom fields to payment method
+         * @param {Array<CustomField>} body 
          * @param {string} paymentMethodId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPaymentMethodCustomFields(paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return PaymentMethodApiFp(configuration).createPaymentMethodCustomFields(paymentMethodId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createPaymentMethodCustomFields(body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return PaymentMethodApiFp(configuration).createPaymentMethodCustomFields(body, paymentMethodId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -29342,16 +29342,16 @@ export const PaymentMethodApiFactory = function (configuration?: Configuration, 
         /**
          * 
          * @summary Modify custom fields to payment method
+         * @param {Array<CustomField>} body 
          * @param {string} paymentMethodId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyPaymentMethodCustomFields(paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentMethodApiFp(configuration).modifyPaymentMethodCustomFields(paymentMethodId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyPaymentMethodCustomFields(body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentMethodApiFp(configuration).modifyPaymentMethodCustomFields(body, paymentMethodId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -29382,17 +29382,17 @@ export class PaymentMethodApi extends BaseAPI {
     /**
      * 
      * @summary Add custom fields to payment method
+     * @param {Array<CustomField>} body 
      * @param {string} paymentMethodId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentMethodApi
      */
-    public createPaymentMethodCustomFields(paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentMethodApiFp(this.configuration).createPaymentMethodCustomFields(paymentMethodId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createPaymentMethodCustomFields(body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentMethodApiFp(this.configuration).createPaymentMethodCustomFields(body, paymentMethodId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -29506,17 +29506,17 @@ export class PaymentMethodApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to payment method
+     * @param {Array<CustomField>} body 
      * @param {string} paymentMethodId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentMethodApi
      */
-    public modifyPaymentMethodCustomFields(paymentMethodId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentMethodApiFp(this.configuration).modifyPaymentMethodCustomFields(paymentMethodId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyPaymentMethodCustomFields(body: Array<CustomField>, paymentMethodId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentMethodApiFp(this.configuration).modifyPaymentMethodCustomFields(body, paymentMethodId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -29549,15 +29549,19 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
         /**
          * 
          * @summary Add custom fields to payment transaction
+         * @param {Array<CustomField>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransactionCustomFields: async (transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createTransactionCustomFields: async (body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createTransactionCustomFields.');
+            }
             // verify required parameter 'transactionId' is not null or undefined
             if (transactionId === null || transactionId === undefined) {
                 throw new RequiredError('transactionId','Required parameter transactionId was null or undefined when calling createTransactionCustomFields.');
@@ -29565,10 +29569,6 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createTransactionCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createTransactionCustomFields.');
             }
             const localVarPath = `/1.0/kb/paymentTransactions/{transactionId}/customFields`
                 .replace(`{${"transactionId"}}`, encodeURIComponent(String(transactionId)));
@@ -29635,15 +29635,19 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
         /**
          * 
          * @summary Add tags to payment transaction
+         * @param {Array<string>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransactionTags: async (transactionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createTransactionTags: async (body: Array<string>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createTransactionTags.');
+            }
             // verify required parameter 'transactionId' is not null or undefined
             if (transactionId === null || transactionId === undefined) {
                 throw new RequiredError('transactionId','Required parameter transactionId was null or undefined when calling createTransactionTags.');
@@ -29651,10 +29655,6 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createTransactionTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createTransactionTags.');
             }
             const localVarPath = `/1.0/kb/paymentTransactions/{transactionId}/tags`
                 .replace(`{${"transactionId"}}`, encodeURIComponent(String(transactionId)));
@@ -30233,15 +30233,19 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
         /**
          * 
          * @summary Modify custom fields to payment transaction
+         * @param {Array<CustomField>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyTransactionCustomFields: async (transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifyTransactionCustomFields: async (body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyTransactionCustomFields.');
+            }
             // verify required parameter 'transactionId' is not null or undefined
             if (transactionId === null || transactionId === undefined) {
                 throw new RequiredError('transactionId','Required parameter transactionId was null or undefined when calling modifyTransactionCustomFields.');
@@ -30249,10 +30253,6 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifyTransactionCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifyTransactionCustomFields.');
             }
             const localVarPath = `/1.0/kb/paymentTransactions/{transactionId}/customFields`
                 .replace(`{${"transactionId"}}`, encodeURIComponent(String(transactionId)));
@@ -30319,16 +30319,20 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
         /**
          * 
          * @summary Mark a pending payment transaction as succeeded or failed
+         * @param {PaymentTransaction} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyStateChanged: async (transactionId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        notifyStateChanged: async (body: PaymentTransaction, transactionId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling notifyStateChanged.');
+            }
             // verify required parameter 'transactionId' is not null or undefined
             if (transactionId === null || transactionId === undefined) {
                 throw new RequiredError('transactionId','Required parameter transactionId was null or undefined when calling notifyStateChanged.');
@@ -30336,10 +30340,6 @@ export const PaymentTransactionApiAxiosParamCreator = function (configuration?: 
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling notifyStateChanged.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling notifyStateChanged.');
             }
             const localVarPath = `/1.0/kb/paymentTransactions/{transactionId}`
                 .replace(`{${"transactionId"}}`, encodeURIComponent(String(transactionId)));
@@ -30419,16 +30419,16 @@ export const PaymentTransactionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to payment transaction
+         * @param {Array<CustomField>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTransactionCustomFields(transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
-            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).createTransactionCustomFields(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createTransactionCustomFields(body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomField>>> {
+            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).createTransactionCustomFields(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -30437,16 +30437,16 @@ export const PaymentTransactionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add tags to payment transaction
+         * @param {Array<string>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTransactionTags(transactionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
-            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).createTransactionTags(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createTransactionTags(body: Array<string>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tag>>> {
+            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).createTransactionTags(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -30572,16 +30572,16 @@ export const PaymentTransactionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to payment transaction
+         * @param {Array<CustomField>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifyTransactionCustomFields(transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).modifyTransactionCustomFields(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifyTransactionCustomFields(body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).modifyTransactionCustomFields(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -30590,17 +30590,17 @@ export const PaymentTransactionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Mark a pending payment transaction as succeeded or failed
+         * @param {PaymentTransaction} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyStateChanged(transactionId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).notifyStateChanged(transactionId, xKillbillCreatedBy, body, controlPluginName, xKillbillReason, xKillbillComment, options);
+        async notifyStateChanged(body: PaymentTransaction, transactionId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await PaymentTransactionApiAxiosParamCreator(configuration).notifyStateChanged(body, transactionId, xKillbillCreatedBy, controlPluginName, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -30618,30 +30618,30 @@ export const PaymentTransactionApiFactory = function (configuration?: Configurat
         /**
          * 
          * @summary Add custom fields to payment transaction
+         * @param {Array<CustomField>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransactionCustomFields(transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
-            return PaymentTransactionApiFp(configuration).createTransactionCustomFields(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createTransactionCustomFields(body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<CustomField>> {
+            return PaymentTransactionApiFp(configuration).createTransactionCustomFields(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add tags to payment transaction
+         * @param {Array<string>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransactionTags(transactionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
-            return PaymentTransactionApiFp(configuration).createTransactionTags(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createTransactionTags(body: Array<string>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Tag>> {
+            return PaymentTransactionApiFp(configuration).createTransactionTags(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -30735,31 +30735,31 @@ export const PaymentTransactionApiFactory = function (configuration?: Configurat
         /**
          * 
          * @summary Modify custom fields to payment transaction
+         * @param {Array<CustomField>} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifyTransactionCustomFields(transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return PaymentTransactionApiFp(configuration).modifyTransactionCustomFields(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifyTransactionCustomFields(body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return PaymentTransactionApiFp(configuration).modifyTransactionCustomFields(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Mark a pending payment transaction as succeeded or failed
+         * @param {PaymentTransaction} body 
          * @param {string} transactionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {PaymentTransaction} body 
          * @param {Array<string>} [controlPluginName] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyStateChanged(transactionId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
-            return PaymentTransactionApiFp(configuration).notifyStateChanged(transactionId, xKillbillCreatedBy, body, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        notifyStateChanged(body: PaymentTransaction, transactionId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Payment> {
+            return PaymentTransactionApiFp(configuration).notifyStateChanged(body, transactionId, xKillbillCreatedBy, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -30774,33 +30774,33 @@ export class PaymentTransactionApi extends BaseAPI {
     /**
      * 
      * @summary Add custom fields to payment transaction
+     * @param {Array<CustomField>} body 
      * @param {string} transactionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentTransactionApi
      */
-    public createTransactionCustomFields(transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentTransactionApiFp(this.configuration).createTransactionCustomFields(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createTransactionCustomFields(body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentTransactionApiFp(this.configuration).createTransactionCustomFields(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add tags to payment transaction
+     * @param {Array<string>} body 
      * @param {string} transactionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentTransactionApi
      */
-    public createTransactionTags(transactionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentTransactionApiFp(this.configuration).createTransactionTags(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createTransactionTags(body: Array<string>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentTransactionApiFp(this.configuration).createTransactionTags(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -30909,25 +30909,25 @@ export class PaymentTransactionApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to payment transaction
+     * @param {Array<CustomField>} body 
      * @param {string} transactionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentTransactionApi
      */
-    public modifyTransactionCustomFields(transactionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentTransactionApiFp(this.configuration).modifyTransactionCustomFields(transactionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifyTransactionCustomFields(body: Array<CustomField>, transactionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentTransactionApiFp(this.configuration).modifyTransactionCustomFields(body, transactionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Mark a pending payment transaction as succeeded or failed
+     * @param {PaymentTransaction} body 
      * @param {string} transactionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {PaymentTransaction} body 
      * @param {Array<string>} [controlPluginName] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -30935,8 +30935,8 @@ export class PaymentTransactionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentTransactionApi
      */
-    public notifyStateChanged(transactionId: string, xKillbillCreatedBy: string, body: PaymentTransaction, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return PaymentTransactionApiFp(this.configuration).notifyStateChanged(transactionId, xKillbillCreatedBy, body, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public notifyStateChanged(body: PaymentTransaction, transactionId: string, xKillbillCreatedBy: string, controlPluginName?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return PaymentTransactionApiFp(this.configuration).notifyStateChanged(body, transactionId, xKillbillCreatedBy, controlPluginName, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -31073,21 +31073,21 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Add a new role definition)
-         * @param {string} xKillbillCreatedBy 
          * @param {RoleDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addRoleDefinition: async (xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addRoleDefinition.');
-            }
+        addRoleDefinition: async (body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling addRoleDefinition.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addRoleDefinition.');
             }
             const localVarPath = `/1.0/kb/security/roles`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -31137,21 +31137,21 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Add a new user with roles (to make api requests)
-         * @param {string} xKillbillCreatedBy 
          * @param {UserRoles} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addUserRoles: async (xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addUserRoles.');
-            }
+        addUserRoles: async (body: UserRoles, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling addUserRoles.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addUserRoles.');
             }
             const localVarPath = `/1.0/kb/security/users`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -31418,21 +31418,21 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Update a new role definition)
-         * @param {string} xKillbillCreatedBy 
          * @param {RoleDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRoleDefinition: async (xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling updateRoleDefinition.');
-            }
+        updateRoleDefinition: async (body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateRoleDefinition.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling updateRoleDefinition.');
             }
             const localVarPath = `/1.0/kb/security/roles`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -31482,15 +31482,19 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Update a user password
+         * @param {UserRoles} body 
          * @param {string} username 
          * @param {string} xKillbillCreatedBy 
-         * @param {UserRoles} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserPassword: async (username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        updateUserPassword: async (body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateUserPassword.');
+            }
             // verify required parameter 'username' is not null or undefined
             if (username === null || username === undefined) {
                 throw new RequiredError('username','Required parameter username was null or undefined when calling updateUserPassword.');
@@ -31498,10 +31502,6 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling updateUserPassword.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling updateUserPassword.');
             }
             const localVarPath = `/1.0/kb/security/users/{username}/password`
                 .replace(`{${"username"}}`, encodeURIComponent(String(username)));
@@ -31552,15 +31552,19 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Update roles associated to a user
+         * @param {UserRoles} body 
          * @param {string} username 
          * @param {string} xKillbillCreatedBy 
-         * @param {UserRoles} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserRoles: async (username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        updateUserRoles: async (body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateUserRoles.');
+            }
             // verify required parameter 'username' is not null or undefined
             if (username === null || username === undefined) {
                 throw new RequiredError('username','Required parameter username was null or undefined when calling updateUserRoles.');
@@ -31568,10 +31572,6 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling updateUserRoles.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling updateUserRoles.');
             }
             const localVarPath = `/1.0/kb/security/users/{username}/roles`
                 .replace(`{${"username"}}`, encodeURIComponent(String(username)));
@@ -31631,15 +31631,15 @@ export const SecurityApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a new role definition)
-         * @param {string} xKillbillCreatedBy 
          * @param {RoleDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addRoleDefinition(xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleDefinition>> {
-            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).addRoleDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async addRoleDefinition(body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleDefinition>> {
+            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).addRoleDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -31648,15 +31648,15 @@ export const SecurityApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a new user with roles (to make api requests)
-         * @param {string} xKillbillCreatedBy 
          * @param {UserRoles} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addUserRoles(xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRoles>> {
-            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).addUserRoles(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async addUserRoles(body: UserRoles, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRoles>> {
+            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).addUserRoles(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -31736,15 +31736,15 @@ export const SecurityApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update a new role definition)
-         * @param {string} xKillbillCreatedBy 
          * @param {RoleDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateRoleDefinition(xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).updateRoleDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async updateRoleDefinition(body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).updateRoleDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -31753,16 +31753,16 @@ export const SecurityApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update a user password
+         * @param {UserRoles} body 
          * @param {string} username 
          * @param {string} xKillbillCreatedBy 
-         * @param {UserRoles} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserPassword(username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).updateUserPassword(username, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async updateUserPassword(body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).updateUserPassword(body, username, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -31771,16 +31771,16 @@ export const SecurityApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update roles associated to a user
+         * @param {UserRoles} body 
          * @param {string} username 
          * @param {string} xKillbillCreatedBy 
-         * @param {UserRoles} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserRoles(username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).updateUserRoles(username, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async updateUserRoles(body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SecurityApiAxiosParamCreator(configuration).updateUserRoles(body, username, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -31798,28 +31798,28 @@ export const SecurityApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @summary Add a new role definition)
-         * @param {string} xKillbillCreatedBy 
          * @param {RoleDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addRoleDefinition(xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<RoleDefinition> {
-            return SecurityApiFp(configuration).addRoleDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        addRoleDefinition(body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<RoleDefinition> {
+            return SecurityApiFp(configuration).addRoleDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add a new user with roles (to make api requests)
-         * @param {string} xKillbillCreatedBy 
          * @param {UserRoles} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addUserRoles(xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<UserRoles> {
-            return SecurityApiFp(configuration).addUserRoles(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        addUserRoles(body: UserRoles, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<UserRoles> {
+            return SecurityApiFp(configuration).addUserRoles(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -31875,43 +31875,43 @@ export const SecurityApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @summary Update a new role definition)
-         * @param {string} xKillbillCreatedBy 
          * @param {RoleDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRoleDefinition(xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SecurityApiFp(configuration).updateRoleDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        updateRoleDefinition(body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SecurityApiFp(configuration).updateRoleDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update a user password
+         * @param {UserRoles} body 
          * @param {string} username 
          * @param {string} xKillbillCreatedBy 
-         * @param {UserRoles} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserPassword(username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SecurityApiFp(configuration).updateUserPassword(username, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        updateUserPassword(body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SecurityApiFp(configuration).updateUserPassword(body, username, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update roles associated to a user
+         * @param {UserRoles} body 
          * @param {string} username 
          * @param {string} xKillbillCreatedBy 
-         * @param {UserRoles} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserRoles(username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SecurityApiFp(configuration).updateUserRoles(username, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        updateUserRoles(body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SecurityApiFp(configuration).updateUserRoles(body, username, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -31926,31 +31926,31 @@ export class SecurityApi extends BaseAPI {
     /**
      * 
      * @summary Add a new role definition)
-     * @param {string} xKillbillCreatedBy 
      * @param {RoleDefinition} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public addRoleDefinition(xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SecurityApiFp(this.configuration).addRoleDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public addRoleDefinition(body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SecurityApiFp(this.configuration).addRoleDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add a new user with roles (to make api requests)
-     * @param {string} xKillbillCreatedBy 
      * @param {UserRoles} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public addUserRoles(xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SecurityApiFp(this.configuration).addUserRoles(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public addUserRoles(body: UserRoles, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SecurityApiFp(this.configuration).addUserRoles(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -32017,48 +32017,48 @@ export class SecurityApi extends BaseAPI {
     /**
      * 
      * @summary Update a new role definition)
-     * @param {string} xKillbillCreatedBy 
      * @param {RoleDefinition} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public updateRoleDefinition(xKillbillCreatedBy: string, body: RoleDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SecurityApiFp(this.configuration).updateRoleDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public updateRoleDefinition(body: RoleDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SecurityApiFp(this.configuration).updateRoleDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Update a user password
+     * @param {UserRoles} body 
      * @param {string} username 
      * @param {string} xKillbillCreatedBy 
-     * @param {UserRoles} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public updateUserPassword(username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SecurityApiFp(this.configuration).updateUserPassword(username, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public updateUserPassword(body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SecurityApiFp(this.configuration).updateUserPassword(body, username, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Update roles associated to a user
+     * @param {UserRoles} body 
      * @param {string} username 
      * @param {string} xKillbillCreatedBy 
-     * @param {UserRoles} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public updateUserRoles(username: string, xKillbillCreatedBy: string, body: UserRoles, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SecurityApiFp(this.configuration).updateUserRoles(username, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public updateUserRoles(body: UserRoles, username: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SecurityApiFp(this.configuration).updateUserRoles(body, username, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -32073,9 +32073,9 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Block a subscription
+         * @param {BlockingState} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -32083,7 +32083,11 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addSubscriptionBlockingState: async (subscriptionId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        addSubscriptionBlockingState: async (body: BlockingState, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling addSubscriptionBlockingState.');
+            }
             // verify required parameter 'subscriptionId' is not null or undefined
             if (subscriptionId === null || subscriptionId === undefined) {
                 throw new RequiredError('subscriptionId','Required parameter subscriptionId was null or undefined when calling addSubscriptionBlockingState.');
@@ -32091,10 +32095,6 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling addSubscriptionBlockingState.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling addSubscriptionBlockingState.');
             }
             const localVarPath = `/1.0/kb/subscriptions/{subscriptionId}/block`
                 .replace(`{${"subscriptionId"}}`, encodeURIComponent(String(subscriptionId)));
@@ -32285,9 +32285,9 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Change entitlement plan
+         * @param {Subscription} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Subscription} body 
          * @param {string} [requestedDate] 
          * @param {boolean} [callCompletion] 
          * @param {number} [callTimeoutSec] 
@@ -32298,7 +32298,11 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changeSubscriptionPlan: async (subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        changeSubscriptionPlan: async (body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling changeSubscriptionPlan.');
+            }
             // verify required parameter 'subscriptionId' is not null or undefined
             if (subscriptionId === null || subscriptionId === undefined) {
                 throw new RequiredError('subscriptionId','Required parameter subscriptionId was null or undefined when calling changeSubscriptionPlan.');
@@ -32306,10 +32310,6 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling changeSubscriptionPlan.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling changeSubscriptionPlan.');
             }
             const localVarPath = `/1.0/kb/subscriptions/{subscriptionId}`
                 .replace(`{${"subscriptionId"}}`, encodeURIComponent(String(subscriptionId)));
@@ -32398,8 +32398,8 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Create an subscription
-         * @param {string} xKillbillCreatedBy 
          * @param {Subscription} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -32412,14 +32412,14 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscription: async (xKillbillCreatedBy: string, body: Subscription, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscription.');
-            }
+        createSubscription: async (body: Subscription, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createSubscription.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscription.');
             }
             const localVarPath = `/1.0/kb/subscriptions`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -32517,15 +32517,19 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Add custom fields to subscription
+         * @param {Array<CustomField>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionCustomFields: async (subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createSubscriptionCustomFields: async (body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createSubscriptionCustomFields.');
+            }
             // verify required parameter 'subscriptionId' is not null or undefined
             if (subscriptionId === null || subscriptionId === undefined) {
                 throw new RequiredError('subscriptionId','Required parameter subscriptionId was null or undefined when calling createSubscriptionCustomFields.');
@@ -32533,10 +32537,6 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscriptionCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createSubscriptionCustomFields.');
             }
             const localVarPath = `/1.0/kb/subscriptions/{subscriptionId}/customFields`
                 .replace(`{${"subscriptionId"}}`, encodeURIComponent(String(subscriptionId)));
@@ -32602,15 +32602,19 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @param {Array<string>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionTags: async (subscriptionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        createSubscriptionTags: async (body: Array<string>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createSubscriptionTags.');
+            }
             // verify required parameter 'subscriptionId' is not null or undefined
             if (subscriptionId === null || subscriptionId === undefined) {
                 throw new RequiredError('subscriptionId','Required parameter subscriptionId was null or undefined when calling createSubscriptionTags.');
@@ -32618,10 +32622,6 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscriptionTags.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createSubscriptionTags.');
             }
             const localVarPath = `/1.0/kb/subscriptions/{subscriptionId}/tags`
                 .replace(`{${"subscriptionId"}}`, encodeURIComponent(String(subscriptionId)));
@@ -32688,8 +32688,8 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Create an entitlement with addOn products
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<Subscription>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [migrated] 
@@ -32702,14 +32702,14 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionWithAddOns: async (xKillbillCreatedBy: string, body: Array<Subscription>, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscriptionWithAddOns.');
-            }
+        createSubscriptionWithAddOns: async (body: Array<Subscription>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createSubscriptionWithAddOns.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscriptionWithAddOns.');
             }
             const localVarPath = `/1.0/kb/subscriptions/createSubscriptionWithAddOns`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -32807,8 +32807,8 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Create multiple entitlements with addOn products
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<BulkSubscriptionsBundle>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -32821,14 +32821,14 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionsWithAddOns: async (xKillbillCreatedBy: string, body: Array<BulkSubscriptionsBundle>, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscriptionsWithAddOns.');
-            }
+        createSubscriptionsWithAddOns: async (body: Array<BulkSubscriptionsBundle>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createSubscriptionsWithAddOns.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createSubscriptionsWithAddOns.');
             }
             const localVarPath = `/1.0/kb/subscriptions/createSubscriptionsWithAddOns`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -33466,15 +33466,19 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Modify custom fields to subscription
+         * @param {Array<CustomField>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifySubscriptionCustomFields: async (subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        modifySubscriptionCustomFields: async (body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling modifySubscriptionCustomFields.');
+            }
             // verify required parameter 'subscriptionId' is not null or undefined
             if (subscriptionId === null || subscriptionId === undefined) {
                 throw new RequiredError('subscriptionId','Required parameter subscriptionId was null or undefined when calling modifySubscriptionCustomFields.');
@@ -33482,10 +33486,6 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling modifySubscriptionCustomFields.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling modifySubscriptionCustomFields.');
             }
             const localVarPath = `/1.0/kb/subscriptions/{subscriptionId}/customFields`
                 .replace(`{${"subscriptionId"}}`, encodeURIComponent(String(subscriptionId)));
@@ -33716,9 +33716,9 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Update the BCD associated to a subscription
+         * @param {Subscription} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Subscription} body 
          * @param {string} [effectiveFromDate] 
          * @param {boolean} [forceNewBcdWithPastEffectiveDate] 
          * @param {string} [xKillbillReason] 
@@ -33726,7 +33726,11 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSubscriptionBCD: async (subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        updateSubscriptionBCD: async (body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateSubscriptionBCD.');
+            }
             // verify required parameter 'subscriptionId' is not null or undefined
             if (subscriptionId === null || subscriptionId === undefined) {
                 throw new RequiredError('subscriptionId','Required parameter subscriptionId was null or undefined when calling updateSubscriptionBCD.');
@@ -33734,10 +33738,6 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling updateSubscriptionBCD.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling updateSubscriptionBCD.');
             }
             const localVarPath = `/1.0/kb/subscriptions/{subscriptionId}/bcd`
                 .replace(`{${"subscriptionId"}}`, encodeURIComponent(String(subscriptionId)));
@@ -33823,9 +33823,9 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Block a subscription
+         * @param {BlockingState} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -33833,8 +33833,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addSubscriptionBlockingState(subscriptionId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BlockingState>>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).addSubscriptionBlockingState(subscriptionId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async addSubscriptionBlockingState(body: BlockingState, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BlockingState>>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).addSubscriptionBlockingState(body, subscriptionId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -33867,9 +33867,9 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Change entitlement plan
+         * @param {Subscription} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Subscription} body 
          * @param {string} [requestedDate] 
          * @param {boolean} [callCompletion] 
          * @param {number} [callTimeoutSec] 
@@ -33880,8 +33880,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async changeSubscriptionPlan(subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).changeSubscriptionPlan(subscriptionId, xKillbillCreatedBy, body, requestedDate, callCompletion, callTimeoutSec, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async changeSubscriptionPlan(body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).changeSubscriptionPlan(body, subscriptionId, xKillbillCreatedBy, requestedDate, callCompletion, callTimeoutSec, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -33890,8 +33890,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create an subscription
-         * @param {string} xKillbillCreatedBy 
          * @param {Subscription} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -33904,8 +33904,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createSubscription(xKillbillCreatedBy: string, body: Subscription, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Subscription>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscription(xKillbillCreatedBy, body, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createSubscription(body: Subscription, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Subscription>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscription(body, xKillbillCreatedBy, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -33914,16 +33914,16 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add custom fields to subscription
+         * @param {Array<CustomField>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createSubscriptionCustomFields(subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionCustomFields(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createSubscriptionCustomFields(body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionCustomFields(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -33931,16 +33931,16 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {Array<string>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createSubscriptionTags(subscriptionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionTags(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createSubscriptionTags(body: Array<string>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionTags(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -33949,8 +33949,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create an entitlement with addOn products
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<Subscription>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [migrated] 
@@ -33963,8 +33963,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createSubscriptionWithAddOns(xKillbillCreatedBy: string, body: Array<Subscription>, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bundle>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionWithAddOns(xKillbillCreatedBy, body, entitlementDate, billingDate, migrated, renameKeyIfExistsAndUnused, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createSubscriptionWithAddOns(body: Array<Subscription>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bundle>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionWithAddOns(body, xKillbillCreatedBy, entitlementDate, billingDate, migrated, renameKeyIfExistsAndUnused, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -33973,8 +33973,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create multiple entitlements with addOn products
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<BulkSubscriptionsBundle>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -33987,8 +33987,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createSubscriptionsWithAddOns(xKillbillCreatedBy: string, body: Array<BulkSubscriptionsBundle>, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Bundle>>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionsWithAddOns(xKillbillCreatedBy, body, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options);
+        async createSubscriptionsWithAddOns(body: Array<BulkSubscriptionsBundle>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Bundle>>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).createSubscriptionsWithAddOns(body, xKillbillCreatedBy, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -34122,16 +34122,16 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Modify custom fields to subscription
+         * @param {Array<CustomField>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async modifySubscriptionCustomFields(subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).modifySubscriptionCustomFields(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async modifySubscriptionCustomFields(body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).modifySubscriptionCustomFields(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -34176,9 +34176,9 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update the BCD associated to a subscription
+         * @param {Subscription} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Subscription} body 
          * @param {string} [effectiveFromDate] 
          * @param {boolean} [forceNewBcdWithPastEffectiveDate] 
          * @param {string} [xKillbillReason] 
@@ -34186,8 +34186,8 @@ export const SubscriptionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateSubscriptionBCD(subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).updateSubscriptionBCD(subscriptionId, xKillbillCreatedBy, body, effectiveFromDate, forceNewBcdWithPastEffectiveDate, xKillbillReason, xKillbillComment, options);
+        async updateSubscriptionBCD(body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await SubscriptionApiAxiosParamCreator(configuration).updateSubscriptionBCD(body, subscriptionId, xKillbillCreatedBy, effectiveFromDate, forceNewBcdWithPastEffectiveDate, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -34205,9 +34205,9 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
         /**
          * 
          * @summary Block a subscription
+         * @param {BlockingState} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {BlockingState} body 
          * @param {string} [requestedDate] 
          * @param {Array<string>} [pluginProperty] 
          * @param {string} [xKillbillReason] 
@@ -34215,8 +34215,8 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addSubscriptionBlockingState(subscriptionId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<BlockingState>> {
-            return SubscriptionApiFp(configuration).addSubscriptionBlockingState(subscriptionId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        addSubscriptionBlockingState(body: BlockingState, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<BlockingState>> {
+            return SubscriptionApiFp(configuration).addSubscriptionBlockingState(body, subscriptionId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -34241,9 +34241,9 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
         /**
          * 
          * @summary Change entitlement plan
+         * @param {Subscription} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Subscription} body 
          * @param {string} [requestedDate] 
          * @param {boolean} [callCompletion] 
          * @param {number} [callTimeoutSec] 
@@ -34254,14 +34254,14 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changeSubscriptionPlan(subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SubscriptionApiFp(configuration).changeSubscriptionPlan(subscriptionId, xKillbillCreatedBy, body, requestedDate, callCompletion, callTimeoutSec, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        changeSubscriptionPlan(body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SubscriptionApiFp(configuration).changeSubscriptionPlan(body, subscriptionId, xKillbillCreatedBy, requestedDate, callCompletion, callTimeoutSec, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create an subscription
-         * @param {string} xKillbillCreatedBy 
          * @param {Subscription} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -34274,41 +34274,41 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscription(xKillbillCreatedBy: string, body: Subscription, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Subscription> {
-            return SubscriptionApiFp(configuration).createSubscription(xKillbillCreatedBy, body, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createSubscription(body: Subscription, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Subscription> {
+            return SubscriptionApiFp(configuration).createSubscription(body, xKillbillCreatedBy, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add custom fields to subscription
+         * @param {Array<CustomField>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionCustomFields(subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SubscriptionApiFp(configuration).createSubscriptionCustomFields(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createSubscriptionCustomFields(body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SubscriptionApiFp(configuration).createSubscriptionCustomFields(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
+         * @param {Array<string>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<string>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionTags(subscriptionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SubscriptionApiFp(configuration).createSubscriptionTags(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createSubscriptionTags(body: Array<string>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SubscriptionApiFp(configuration).createSubscriptionTags(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create an entitlement with addOn products
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<Subscription>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [migrated] 
@@ -34321,14 +34321,14 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionWithAddOns(xKillbillCreatedBy: string, body: Array<Subscription>, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Bundle> {
-            return SubscriptionApiFp(configuration).createSubscriptionWithAddOns(xKillbillCreatedBy, body, entitlementDate, billingDate, migrated, renameKeyIfExistsAndUnused, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createSubscriptionWithAddOns(body: Array<Subscription>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Bundle> {
+            return SubscriptionApiFp(configuration).createSubscriptionWithAddOns(body, xKillbillCreatedBy, entitlementDate, billingDate, migrated, renameKeyIfExistsAndUnused, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create multiple entitlements with addOn products
-         * @param {string} xKillbillCreatedBy 
          * @param {Array<BulkSubscriptionsBundle>} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [entitlementDate] 
          * @param {string} [billingDate] 
          * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -34341,8 +34341,8 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSubscriptionsWithAddOns(xKillbillCreatedBy: string, body: Array<BulkSubscriptionsBundle>, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Bundle>> {
-            return SubscriptionApiFp(configuration).createSubscriptionsWithAddOns(xKillbillCreatedBy, body, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createSubscriptionsWithAddOns(body: Array<BulkSubscriptionsBundle>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Array<Bundle>> {
+            return SubscriptionApiFp(configuration).createSubscriptionsWithAddOns(body, xKillbillCreatedBy, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -34440,16 +34440,16 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
         /**
          * 
          * @summary Modify custom fields to subscription
+         * @param {Array<CustomField>} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Array<CustomField>} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        modifySubscriptionCustomFields(subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SubscriptionApiFp(configuration).modifySubscriptionCustomFields(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        modifySubscriptionCustomFields(body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SubscriptionApiFp(configuration).modifySubscriptionCustomFields(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -34482,9 +34482,9 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
         /**
          * 
          * @summary Update the BCD associated to a subscription
+         * @param {Subscription} body 
          * @param {string} subscriptionId 
          * @param {string} xKillbillCreatedBy 
-         * @param {Subscription} body 
          * @param {string} [effectiveFromDate] 
          * @param {boolean} [forceNewBcdWithPastEffectiveDate] 
          * @param {string} [xKillbillReason] 
@@ -34492,8 +34492,8 @@ export const SubscriptionApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSubscriptionBCD(subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return SubscriptionApiFp(configuration).updateSubscriptionBCD(subscriptionId, xKillbillCreatedBy, body, effectiveFromDate, forceNewBcdWithPastEffectiveDate, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        updateSubscriptionBCD(body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return SubscriptionApiFp(configuration).updateSubscriptionBCD(body, subscriptionId, xKillbillCreatedBy, effectiveFromDate, forceNewBcdWithPastEffectiveDate, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -34508,9 +34508,9 @@ export class SubscriptionApi extends BaseAPI {
     /**
      * 
      * @summary Block a subscription
+     * @param {BlockingState} body 
      * @param {string} subscriptionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {BlockingState} body 
      * @param {string} [requestedDate] 
      * @param {Array<string>} [pluginProperty] 
      * @param {string} [xKillbillReason] 
@@ -34519,8 +34519,8 @@ export class SubscriptionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public addSubscriptionBlockingState(subscriptionId: string, xKillbillCreatedBy: string, body: BlockingState, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).addSubscriptionBlockingState(subscriptionId, xKillbillCreatedBy, body, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public addSubscriptionBlockingState(body: BlockingState, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).addSubscriptionBlockingState(body, subscriptionId, xKillbillCreatedBy, requestedDate, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34548,9 +34548,9 @@ export class SubscriptionApi extends BaseAPI {
     /**
      * 
      * @summary Change entitlement plan
+     * @param {Subscription} body 
      * @param {string} subscriptionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Subscription} body 
      * @param {string} [requestedDate] 
      * @param {boolean} [callCompletion] 
      * @param {number} [callTimeoutSec] 
@@ -34562,15 +34562,15 @@ export class SubscriptionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public changeSubscriptionPlan(subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).changeSubscriptionPlan(subscriptionId, xKillbillCreatedBy, body, requestedDate, callCompletion, callTimeoutSec, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public changeSubscriptionPlan(body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, requestedDate?: string, callCompletion?: boolean, callTimeoutSec?: number, billingPolicy?: 'START_OF_TERM' | 'END_OF_TERM' | 'IMMEDIATE' | 'ILLEGAL', pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).changeSubscriptionPlan(body, subscriptionId, xKillbillCreatedBy, requestedDate, callCompletion, callTimeoutSec, billingPolicy, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create an subscription
-     * @param {string} xKillbillCreatedBy 
      * @param {Subscription} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [entitlementDate] 
      * @param {string} [billingDate] 
      * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -34584,46 +34584,46 @@ export class SubscriptionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public createSubscription(xKillbillCreatedBy: string, body: Subscription, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).createSubscription(xKillbillCreatedBy, body, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createSubscription(body: Subscription, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).createSubscription(body, xKillbillCreatedBy, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add custom fields to subscription
+     * @param {Array<CustomField>} body 
      * @param {string} subscriptionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public createSubscriptionCustomFields(subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).createSubscriptionCustomFields(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createSubscriptionCustomFields(body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).createSubscriptionCustomFields(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
+     * @param {Array<string>} body 
      * @param {string} subscriptionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<string>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public createSubscriptionTags(subscriptionId: string, xKillbillCreatedBy: string, body: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).createSubscriptionTags(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createSubscriptionTags(body: Array<string>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).createSubscriptionTags(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create an entitlement with addOn products
-     * @param {string} xKillbillCreatedBy 
      * @param {Array<Subscription>} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [entitlementDate] 
      * @param {string} [billingDate] 
      * @param {boolean} [migrated] 
@@ -34637,15 +34637,15 @@ export class SubscriptionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public createSubscriptionWithAddOns(xKillbillCreatedBy: string, body: Array<Subscription>, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).createSubscriptionWithAddOns(xKillbillCreatedBy, body, entitlementDate, billingDate, migrated, renameKeyIfExistsAndUnused, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createSubscriptionWithAddOns(body: Array<Subscription>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, migrated?: boolean, renameKeyIfExistsAndUnused?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).createSubscriptionWithAddOns(body, xKillbillCreatedBy, entitlementDate, billingDate, migrated, renameKeyIfExistsAndUnused, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create multiple entitlements with addOn products
-     * @param {string} xKillbillCreatedBy 
      * @param {Array<BulkSubscriptionsBundle>} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [entitlementDate] 
      * @param {string} [billingDate] 
      * @param {boolean} [renameKeyIfExistsAndUnused] 
@@ -34659,8 +34659,8 @@ export class SubscriptionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public createSubscriptionsWithAddOns(xKillbillCreatedBy: string, body: Array<BulkSubscriptionsBundle>, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).createSubscriptionsWithAddOns(xKillbillCreatedBy, body, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createSubscriptionsWithAddOns(body: Array<BulkSubscriptionsBundle>, xKillbillCreatedBy: string, entitlementDate?: string, billingDate?: string, renameKeyIfExistsAndUnused?: boolean, migrated?: boolean, callCompletion?: boolean, callTimeoutSec?: number, pluginProperty?: Array<string>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).createSubscriptionsWithAddOns(body, xKillbillCreatedBy, entitlementDate, billingDate, renameKeyIfExistsAndUnused, migrated, callCompletion, callTimeoutSec, pluginProperty, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34775,17 +34775,17 @@ export class SubscriptionApi extends BaseAPI {
     /**
      * 
      * @summary Modify custom fields to subscription
+     * @param {Array<CustomField>} body 
      * @param {string} subscriptionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Array<CustomField>} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public modifySubscriptionCustomFields(subscriptionId: string, xKillbillCreatedBy: string, body: Array<CustomField>, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).modifySubscriptionCustomFields(subscriptionId, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public modifySubscriptionCustomFields(body: Array<CustomField>, subscriptionId: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).modifySubscriptionCustomFields(body, subscriptionId, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -34823,9 +34823,9 @@ export class SubscriptionApi extends BaseAPI {
     /**
      * 
      * @summary Update the BCD associated to a subscription
+     * @param {Subscription} body 
      * @param {string} subscriptionId 
      * @param {string} xKillbillCreatedBy 
-     * @param {Subscription} body 
      * @param {string} [effectiveFromDate] 
      * @param {boolean} [forceNewBcdWithPastEffectiveDate] 
      * @param {string} [xKillbillReason] 
@@ -34834,8 +34834,8 @@ export class SubscriptionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SubscriptionApi
      */
-    public updateSubscriptionBCD(subscriptionId: string, xKillbillCreatedBy: string, body: Subscription, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return SubscriptionApiFp(this.configuration).updateSubscriptionBCD(subscriptionId, xKillbillCreatedBy, body, effectiveFromDate, forceNewBcdWithPastEffectiveDate, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public updateSubscriptionBCD(body: Subscription, subscriptionId: string, xKillbillCreatedBy: string, effectiveFromDate?: string, forceNewBcdWithPastEffectiveDate?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return SubscriptionApiFp(this.configuration).updateSubscriptionBCD(body, subscriptionId, xKillbillCreatedBy, effectiveFromDate, forceNewBcdWithPastEffectiveDate, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -35208,21 +35208,21 @@ export const TagDefinitionApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @summary Create a tag definition
-         * @param {string} xKillbillCreatedBy 
          * @param {TagDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTagDefinition: async (xKillbillCreatedBy: string, body: TagDefinition, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createTagDefinition.');
-            }
+        createTagDefinition: async (body: TagDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createTagDefinition.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createTagDefinition.');
             }
             const localVarPath = `/1.0/kb/tagDefinitions`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -35552,15 +35552,15 @@ export const TagDefinitionApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a tag definition
-         * @param {string} xKillbillCreatedBy 
          * @param {TagDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTagDefinition(xKillbillCreatedBy: string, body: TagDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TagDefinition>> {
-            const localVarAxiosArgs = await TagDefinitionApiAxiosParamCreator(configuration).createTagDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async createTagDefinition(body: TagDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TagDefinition>> {
+            const localVarAxiosArgs = await TagDefinitionApiAxiosParamCreator(configuration).createTagDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -35638,15 +35638,15 @@ export const TagDefinitionApiFactory = function (configuration?: Configuration, 
         /**
          * 
          * @summary Create a tag definition
-         * @param {string} xKillbillCreatedBy 
          * @param {TagDefinition} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTagDefinition(xKillbillCreatedBy: string, body: TagDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TagDefinition> {
-            return TagDefinitionApiFp(configuration).createTagDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createTagDefinition(body: TagDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TagDefinition> {
+            return TagDefinitionApiFp(configuration).createTagDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -35705,16 +35705,16 @@ export class TagDefinitionApi extends BaseAPI {
     /**
      * 
      * @summary Create a tag definition
-     * @param {string} xKillbillCreatedBy 
      * @param {TagDefinition} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TagDefinitionApi
      */
-    public createTagDefinition(xKillbillCreatedBy: string, body: TagDefinition, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return TagDefinitionApiFp(this.configuration).createTagDefinition(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createTagDefinition(body: TagDefinition, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return TagDefinitionApiFp(this.configuration).createTagDefinition(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -35781,22 +35781,22 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Create a tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {Tenant} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [useGlobalDefault] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTenant: async (xKillbillCreatedBy: string, body: Tenant, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createTenant.');
-            }
+        createTenant: async (body: Tenant, xKillbillCreatedBy: string, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createTenant.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling createTenant.');
             }
             const localVarPath = `/1.0/kb/tenants`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -36658,15 +36658,19 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Add a per tenant user key/value
+         * @param {string} body 
          * @param {string} keyName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        insertUserKeyValue: async (keyName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        insertUserKeyValue: async (body: string, keyName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling insertUserKeyValue.');
+            }
             // verify required parameter 'keyName' is not null or undefined
             if (keyName === null || keyName === undefined) {
                 throw new RequiredError('keyName','Required parameter keyName was null or undefined when calling insertUserKeyValue.');
@@ -36674,10 +36678,6 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling insertUserKeyValue.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling insertUserKeyValue.');
             }
             const localVarPath = `/1.0/kb/tenants/userKeyValue/{keyName}`
                 .replace(`{${"keyName"}}`, encodeURIComponent(String(keyName)));
@@ -36820,21 +36820,21 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Add a per tenant configuration (system properties)
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadPerTenantConfiguration: async (xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadPerTenantConfiguration.');
-            }
+        uploadPerTenantConfiguration: async (body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling uploadPerTenantConfiguration.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadPerTenantConfiguration.');
             }
             const localVarPath = `/1.0/kb/tenants/uploadPerTenantConfig`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -36900,15 +36900,19 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Add a per tenant configuration for a plugin
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadPluginConfiguration: async (pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        uploadPluginConfiguration: async (body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadPluginConfiguration.');
+            }
             // verify required parameter 'pluginName' is not null or undefined
             if (pluginName === null || pluginName === undefined) {
                 throw new RequiredError('pluginName','Required parameter pluginName was null or undefined when calling uploadPluginConfiguration.');
@@ -36916,10 +36920,6 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadPluginConfiguration.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadPluginConfiguration.');
             }
             const localVarPath = `/1.0/kb/tenants/uploadPluginConfig/{pluginName}`
                 .replace(`{${"pluginName"}}`, encodeURIComponent(String(pluginName)));
@@ -36986,15 +36986,19 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Add a per tenant payment state machine for a plugin
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadPluginPaymentStateMachineConfig: async (pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+        uploadPluginPaymentStateMachineConfig: async (body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadPluginPaymentStateMachineConfig.');
+            }
             // verify required parameter 'pluginName' is not null or undefined
             if (pluginName === null || pluginName === undefined) {
                 throw new RequiredError('pluginName','Required parameter pluginName was null or undefined when calling uploadPluginPaymentStateMachineConfig.');
@@ -37002,10 +37006,6 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'xKillbillCreatedBy' is not null or undefined
             if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
                 throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling uploadPluginPaymentStateMachineConfig.');
-            }
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling uploadPluginPaymentStateMachineConfig.');
             }
             const localVarPath = `/1.0/kb/tenants/uploadPluginPaymentStateMachineConfig/{pluginName}`
                 .replace(`{${"pluginName"}}`, encodeURIComponent(String(pluginName)));
@@ -37081,16 +37081,16 @@ export const TenantApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {Tenant} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [useGlobalDefault] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTenant(xKillbillCreatedBy: string, body: Tenant, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Tenant>> {
-            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).createTenant(xKillbillCreatedBy, body, useGlobalDefault, xKillbillReason, xKillbillComment, options);
+        async createTenant(body: Tenant, xKillbillCreatedBy: string, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Tenant>> {
+            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).createTenant(body, xKillbillCreatedBy, useGlobalDefault, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -37292,16 +37292,16 @@ export const TenantApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a per tenant user key/value
+         * @param {string} body 
          * @param {string} keyName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async insertUserKeyValue(keyName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
-            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).insertUserKeyValue(keyName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async insertUserKeyValue(body: string, keyName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
+            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).insertUserKeyValue(body, keyName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -37327,15 +37327,15 @@ export const TenantApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a per tenant configuration (system properties)
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadPerTenantConfiguration(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
-            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).uploadPerTenantConfiguration(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async uploadPerTenantConfiguration(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
+            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).uploadPerTenantConfiguration(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -37344,16 +37344,16 @@ export const TenantApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a per tenant configuration for a plugin
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadPluginConfiguration(pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
-            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).uploadPluginConfiguration(pluginName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async uploadPluginConfiguration(body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
+            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).uploadPluginConfiguration(body, pluginName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -37362,16 +37362,16 @@ export const TenantApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add a per tenant payment state machine for a plugin
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadPluginPaymentStateMachineConfig(pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
-            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).uploadPluginPaymentStateMachineConfig(pluginName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async uploadPluginPaymentStateMachineConfig(body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TenantKeyValue>> {
+            const localVarAxiosArgs = await TenantApiAxiosParamCreator(configuration).uploadPluginPaymentStateMachineConfig(body, pluginName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -37389,16 +37389,16 @@ export const TenantApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Create a tenant
-         * @param {string} xKillbillCreatedBy 
          * @param {Tenant} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {boolean} [useGlobalDefault] 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTenant(xKillbillCreatedBy: string, body: Tenant, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Tenant> {
-            return TenantApiFp(configuration).createTenant(xKillbillCreatedBy, body, useGlobalDefault, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        createTenant(body: Tenant, xKillbillCreatedBy: string, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<Tenant> {
+            return TenantApiFp(configuration).createTenant(body, xKillbillCreatedBy, useGlobalDefault, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -37544,16 +37544,16 @@ export const TenantApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Add a per tenant user key/value
+         * @param {string} body 
          * @param {string} keyName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        insertUserKeyValue(keyName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
-            return TenantApiFp(configuration).insertUserKeyValue(keyName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        insertUserKeyValue(body: string, keyName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
+            return TenantApiFp(configuration).insertUserKeyValue(body, keyName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -37571,43 +37571,43 @@ export const TenantApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Add a per tenant configuration (system properties)
-         * @param {string} xKillbillCreatedBy 
          * @param {string} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadPerTenantConfiguration(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
-            return TenantApiFp(configuration).uploadPerTenantConfiguration(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadPerTenantConfiguration(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
+            return TenantApiFp(configuration).uploadPerTenantConfiguration(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add a per tenant configuration for a plugin
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadPluginConfiguration(pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
-            return TenantApiFp(configuration).uploadPluginConfiguration(pluginName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadPluginConfiguration(body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
+            return TenantApiFp(configuration).uploadPluginConfiguration(body, pluginName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Add a per tenant payment state machine for a plugin
+         * @param {string} body 
          * @param {string} pluginName 
          * @param {string} xKillbillCreatedBy 
-         * @param {string} body 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadPluginPaymentStateMachineConfig(pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
-            return TenantApiFp(configuration).uploadPluginPaymentStateMachineConfig(pluginName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        uploadPluginPaymentStateMachineConfig(body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<TenantKeyValue> {
+            return TenantApiFp(configuration).uploadPluginPaymentStateMachineConfig(body, pluginName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -37622,8 +37622,8 @@ export class TenantApi extends BaseAPI {
     /**
      * 
      * @summary Create a tenant
-     * @param {string} xKillbillCreatedBy 
      * @param {Tenant} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {boolean} [useGlobalDefault] 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
@@ -37631,8 +37631,8 @@ export class TenantApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TenantApi
      */
-    public createTenant(xKillbillCreatedBy: string, body: Tenant, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return TenantApiFp(this.configuration).createTenant(xKillbillCreatedBy, body, useGlobalDefault, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public createTenant(body: Tenant, xKillbillCreatedBy: string, useGlobalDefault?: boolean, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return TenantApiFp(this.configuration).createTenant(body, xKillbillCreatedBy, useGlobalDefault, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -37805,17 +37805,17 @@ export class TenantApi extends BaseAPI {
     /**
      * 
      * @summary Add a per tenant user key/value
+     * @param {string} body 
      * @param {string} keyName 
      * @param {string} xKillbillCreatedBy 
-     * @param {string} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TenantApi
      */
-    public insertUserKeyValue(keyName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return TenantApiFp(this.configuration).insertUserKeyValue(keyName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public insertUserKeyValue(body: string, keyName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return TenantApiFp(this.configuration).insertUserKeyValue(body, keyName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -37836,48 +37836,48 @@ export class TenantApi extends BaseAPI {
     /**
      * 
      * @summary Add a per tenant configuration (system properties)
-     * @param {string} xKillbillCreatedBy 
      * @param {string} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TenantApi
      */
-    public uploadPerTenantConfiguration(xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return TenantApiFp(this.configuration).uploadPerTenantConfiguration(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadPerTenantConfiguration(body: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return TenantApiFp(this.configuration).uploadPerTenantConfiguration(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add a per tenant configuration for a plugin
+     * @param {string} body 
      * @param {string} pluginName 
      * @param {string} xKillbillCreatedBy 
-     * @param {string} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TenantApi
      */
-    public uploadPluginConfiguration(pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return TenantApiFp(this.configuration).uploadPluginConfiguration(pluginName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadPluginConfiguration(body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return TenantApiFp(this.configuration).uploadPluginConfiguration(body, pluginName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Add a per tenant payment state machine for a plugin
+     * @param {string} body 
      * @param {string} pluginName 
      * @param {string} xKillbillCreatedBy 
-     * @param {string} body 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TenantApi
      */
-    public uploadPluginPaymentStateMachineConfig(pluginName: string, xKillbillCreatedBy: string, body: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return TenantApiFp(this.configuration).uploadPluginPaymentStateMachineConfig(pluginName, xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public uploadPluginPaymentStateMachineConfig(body: string, pluginName: string, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return TenantApiFp(this.configuration).uploadPluginPaymentStateMachineConfig(body, pluginName, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }
@@ -38042,21 +38042,21 @@ export const UsageApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Record usage for a subscription
-         * @param {string} xKillbillCreatedBy 
          * @param {SubscriptionUsageRecord} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        recordUsage: async (xKillbillCreatedBy: string, body: SubscriptionUsageRecord, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
-            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
-                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling recordUsage.');
-            }
+        recordUsage: async (body: SubscriptionUsageRecord, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling recordUsage.');
+            }
+            // verify required parameter 'xKillbillCreatedBy' is not null or undefined
+            if (xKillbillCreatedBy === null || xKillbillCreatedBy === undefined) {
+                throw new RequiredError('xKillbillCreatedBy','Required parameter xKillbillCreatedBy was null or undefined when calling recordUsage.');
             }
             const localVarPath = `/1.0/kb/usages`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -38164,15 +38164,15 @@ export const UsageApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Record usage for a subscription
-         * @param {string} xKillbillCreatedBy 
          * @param {SubscriptionUsageRecord} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async recordUsage(xKillbillCreatedBy: string, body: SubscriptionUsageRecord, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await UsageApiAxiosParamCreator(configuration).recordUsage(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options);
+        async recordUsage(body: SubscriptionUsageRecord, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await UsageApiAxiosParamCreator(configuration).recordUsage(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -38215,15 +38215,15 @@ export const UsageApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Record usage for a subscription
-         * @param {string} xKillbillCreatedBy 
          * @param {SubscriptionUsageRecord} body 
+         * @param {string} xKillbillCreatedBy 
          * @param {string} [xKillbillReason] 
          * @param {string} [xKillbillComment] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        recordUsage(xKillbillCreatedBy: string, body: SubscriptionUsageRecord, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
-            return UsageApiFp(configuration).recordUsage(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
+        recordUsage(body: SubscriptionUsageRecord, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any): AxiosPromise<void> {
+            return UsageApiFp(configuration).recordUsage(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -38267,16 +38267,16 @@ export class UsageApi extends BaseAPI {
     /**
      * 
      * @summary Record usage for a subscription
-     * @param {string} xKillbillCreatedBy 
      * @param {SubscriptionUsageRecord} body 
+     * @param {string} xKillbillCreatedBy 
      * @param {string} [xKillbillReason] 
      * @param {string} [xKillbillComment] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsageApi
      */
-    public recordUsage(xKillbillCreatedBy: string, body: SubscriptionUsageRecord, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
-        return UsageApiFp(this.configuration).recordUsage(xKillbillCreatedBy, body, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
+    public recordUsage(body: SubscriptionUsageRecord, xKillbillCreatedBy: string, xKillbillReason?: string, xKillbillComment?: string, options?: any) {
+        return UsageApiFp(this.configuration).recordUsage(body, xKillbillCreatedBy, xKillbillReason, xKillbillComment, options).then((request) => request(this.axios, this.basePath));
     }
 
 }

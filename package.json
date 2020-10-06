@@ -13,9 +13,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rm -rf src dist",
-    "codegen": "npm run clean && openapi-generator generate --generator-name typescript-axios --input-spec kbswagger.yaml --output src --additional-properties supportsES6=true",
-    "build": "tsc",
+    "clean": "rm -rf dist",
+    "codegen": "openapi-generator generate --generator-name typescript-axios --input-spec codegen/kbswagger.yaml --config codegen/config.yaml",
+    "build": "npm run clean && tsc",
+    "test": "mocha test/*.ts --require ts-node/register",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
@@ -23,7 +24,12 @@
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^1.0.18-4.3.1",
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
     "@types/node": "^14.11.2",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   }
 }
