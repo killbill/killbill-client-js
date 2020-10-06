@@ -1,4 +1,4 @@
-import {Account, AccountApi, Configuration} from "../src";
+import {Account, AccountApi, axiosWithFollowLocation, Configuration} from "../src";
 import {expect} from 'chai';
 
 describe('Account Api', () => {
@@ -15,7 +15,7 @@ describe('Account Api', () => {
             accessToken: 'lazar',
             basePath: 'http://127.0.0.1:8080'
         });
-        accountApi = new AccountApi(config);
+        accountApi = new AccountApi(config, null, axiosWithFollowLocation);
         externalKey = new Date().getTime().toString();
     });
 
