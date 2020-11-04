@@ -3,8 +3,9 @@
     "declaration": true,
     "target": "es6",
     "module": "commonjs",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "outDir": "./dist",
+    "strict": false,
     "typeRoots": [
       "node_modules/@types"
     ]

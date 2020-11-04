@@ -1,5 +1,6 @@
-import {Account, AccountApi, axiosWithFollowLocation, Configuration} from "../src";
+import {Account, AccountApi, Configuration, followLocationHeaderInterceptor, apiKey} from "../src";
 import {expect} from 'chai';
+import globalAxios from "axios";
 
 describe('Account Api', () => {
 
@@ -8,15 +9,20 @@ describe('Account Api', () => {
     let externalKey: string;
 
     before(() => {
+
+        const axios = globalAxios.create();
+        axios.interceptors.response.use(followLocationHeaderInterceptor)
+
         var config = new Configuration({
             username: 'admin',
             password: 'password',
-            apiKey: 'bob',
-            accessToken: 'lazar',
+            apiKey: apiKey('bob', 'lazar'),
             basePath: 'http://127.0.0.1:8080'
         });
-        accountApi = new AccountApi(config, null, axiosWithFollowLocation);
+
+        accountApi = new AccountApi(config, null, axios);
         externalKey = new Date().getTime().toString();
+
     });
 
     it('should create account', (done) => {
