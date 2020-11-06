@@ -3,9 +3,7 @@ import globalAxios, {AxiosRequestConfig} from "axios";
 const apiKeyHeaderName = "X-Killbill-ApiKey";
 const apiSecretHeaderName = "X-Killbill-ApiSecret";
 
-let axiosWithFollowLocation = globalAxios.create();
-
-axiosWithFollowLocation.interceptors.response.use(async response => {
+export async function followLocationHeaderInterceptor(response) {
     var location = response.headers.location;
     if (response.status === 201 && location) {
         var config: AxiosRequestConfig = {
@@ -19,8 +17,12 @@ axiosWithFollowLocation.interceptors.response.use(async response => {
         response.data = followResponse.data;
     }
     return response;
-}, function (error) {
-    return Promise.reject(error);
-});
+}
 
-export {axiosWithFollowLocation};
+export function apiKey(apiKey: string, apiSecret: string) {
+    return (k: string) => {
+        if (k === apiKeyHeaderName) return apiKey;
+        if (k === apiSecretHeaderName) return apiSecret;
+        return null
+    }
+}

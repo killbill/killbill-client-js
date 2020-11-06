@@ -15,15 +15,28 @@ Usage
 -
 ``` javascript
 const killbill = require('killbill');
+const globalAxios = require('axios');
+
+const axios = globalAxios.create();
+
+//optional - follow location header when new object is created
+axios.interceptors.response.use(killbill.followLocationHeaderInterceptor);
+
+//optional - configure tough cookie support
+const tough = require('tough-cookie');
+const axiosCookieJarSupport = require('axios-cookiejar-support').default;
+axiosCookieJarSupport(axios);
+axios.defaults.withCredentials = true;
+axios.defaults.jar = new tough.CookieJar();
+
 const config = new killbill.Configuration({
     username: "admin"
     password: "password",
-    apiKey: "bob",
-    accessToken: "lazar",
-    basePath: "http://localhost:8080"
+    apiKey: killbill.apiKey("bob", "lazar"),
+    basePath: "http://127.0.0.1:8080"
 });
-const externalKey = "external_key";
-new killbill.AccountApi(config).getAccountByKey(externalKey)
+
+new killbill.AccountApi(config, null, axios).getAccountByKey("external_key")
     .then(result => console.log(result))
     .catch(error => console.log(error));
 ```
