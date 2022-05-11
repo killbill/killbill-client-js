@@ -99,7 +99,7 @@ jobs:
                "http://${KB_ADDRESS}:${KB_PORT}/1.0/kb/tenants"
       - name: Run tests
         run: |
-          ./node_modules/mocha/bin/mocha test/*.ts --require ts-node/register
+          npm test
       - name: Debugging after failure
         if: failure()
         run: |
