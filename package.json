@@ -14,7 +14,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rm -rf dist",
-    "codegen": "openapi-generator generate --generator-name typescript-axios --input-spec codegen/kbswagger.yaml --config codegen/config.yaml",
+    "codegen": "openapi-generator-cli generate --generator-name typescript-axios --input-spec codegen/kbswagger.yaml --config codegen/config.yaml",
     "build": "npm run clean && tsc",
     "test": "mocha test/*.ts --require ts-node/register",
     "prepublishOnly": "npm run build"
