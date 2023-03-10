@@ -1,17 +1,17 @@
 name: Node.js Package Beta (24.x)
 
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: Bump Version
-        default: v1.0.0
-        required: true
-
 # on:
-#   push:
-#     branches:
-#       - "work-for-release-0.23.x"
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: Bump Version
+#         default: v1.0.0
+#         required: true
+
+on:
+  push:
+    branches:
+      - "work-for-release-0.23.x"
 
 jobs:
   build:
