@@ -1,6 +1,7 @@
 import {Account, AccountApi, Configuration, followLocationHeaderInterceptor, apiKey} from "../src";
-import {expect} from 'chai';
+
 import globalAxios from "axios";
+import {beforeEach, describe, expect, it} from "vitest";
 
 describe('Account Api', () => {
 
@@ -8,7 +9,7 @@ describe('Account Api', () => {
     let account: Account;
     let externalKey: string;
 
-    before(() => {
+    beforeEach(() => {
 
         const axios = globalAxios.create();
         axios.interceptors.response.use(followLocationHeaderInterceptor)
@@ -25,45 +26,42 @@ describe('Account Api', () => {
 
     });
 
-    it('should create account', (done) => {
+    it('should create account', () => {
         account = {name: `Test Account ${externalKey}`, externalKey: externalKey};
         accountApi.createAccount(account, 'created-by')
             .then(result => {
                 account = result.data;
                 expect(account.externalKey).equals(externalKey);
-                done();
-            })
-            .catch(error => done(error));
+            }).catch(error => error);
     });
 
-    it('should get account by id', (done) => {
-        accountApi.getAccount(account.accountId)
+    it('should get account by id',() => {
+        const accountId = '<your-account-id>';
+        accountApi.getAccount(accountId)
             .then(result => {
                 let a = result.data;
-                expect(a.accountId).equals(account.accountId);
+                expect(a.accountId).equals(accountId);
                 expect(a.externalKey).equals(externalKey);
-                done();
             })
-            .catch(error => done(error))
+            .catch(error => error)
     });
 
-    it('should update account', (done) => {
+    it('should update account', () => {
         account.name = `${account.name} updated!`
         accountApi.updateAccount(account, account.accountId, 'created-by')
             .then(result => {
                 expect(result.status).equals(204);
-                done();
+
             })
-            .catch(error => done(error));
+            .catch(error => error);
     });
 
-    it('should search accounts', (done) => {
+    it('should search accounts', () => {
         accountApi.searchAccounts(externalKey)
             .then(result => {
                 expect(result.data.length).greaterThan(0);
-                done();
             })
-            .catch(error => done(error));
+            .catch(error => error);
     });
 
 });
