@@ -16,7 +16,7 @@
     "clean": "rm -rf dist",
     "codegen": "openapi-generator-cli generate --generator-name typescript-axios --input-spec codegen/kbswagger.yaml --config codegen/config.yaml",
     "build": "npm run clean && tsc",
-    "test": "vitest --mode production",
+    "test": "npm cache clean --force && vitest --mode production",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
@@ -25,7 +25,6 @@
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.13.1",
     "@types/node": "^20.11.25",
-    "ts-node": "^10.9.2",
     "typescript": "^5.4.4",
     "vitest": "^1.4.0"
   }
