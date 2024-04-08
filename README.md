@@ -13,30 +13,13 @@ To regenerate, overwrite kbswagger.yaml and `npm run codegen && npm run build`
 
 Usage
 -
-``` javascript
-const killbill = require('killbill');
-const globalAxios = require('axios');
+See test cases under `test` directory.
 
-const axios = globalAxios.create();
-
-//optional - follow location header when new object is created
-axios.interceptors.response.use(killbill.followLocationHeaderInterceptor);
-
-//optional - configure tough cookie support
-const tough = require('tough-cookie');
-const axiosCookieJarSupport = require('axios-cookiejar-support').default;
-axiosCookieJarSupport(axios);
-axios.defaults.withCredentials = true;
-axios.defaults.jar = new tough.CookieJar();
-
-const config = new killbill.Configuration({
-    username: "admin"
-    password: "password",
-    apiKey: killbill.apiKey("bob", "lazar"),
-    basePath: "http://127.0.0.1:8080"
-});
-
-new killbill.AccountApi(config, null, axios).getAccountByKey("external_key")
-    .then(result => console.log(result))
-    .catch(error => console.log(error));
-```
+Release
+- 
+1. Update version in `package.json`
+2. Commit directly into `master` branch.
+3. Create git tag. Tag format is `v<version>`. For example, `v1.0.0`.
+4. Push the tag to remote.
+5. Go to https://github.com/killbill/killbill-client-js/releases/new, select the tag and fill in the release notes.
+6. Publish the release.
