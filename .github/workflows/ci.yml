@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - node-version: '14'
+          - node-version: '18'
             docker-compose-file: 'docker-compose.ci.mysql.yml'
     steps:
       - name: Checkout code
